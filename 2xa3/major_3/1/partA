@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+#ifdef _AB
+  void code1();
+#endif
+#ifdef _BC
+  void code2();
+#endif
+#ifdef _CD
+  void code3();
+#endif
+
+int main() {
+#ifdef _W1
+  printf("End of the term is approaching fast\n");
+  return 0;
+#endif
+#ifdef _W2
+  printf("End of the term is here\n");
+  return 0;
+#endif

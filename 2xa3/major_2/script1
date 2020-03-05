@@ -1,0 +1,89 @@
+#!/bin/bash
+
+mkdir Outer_Directory
+echo "Outer_Directory created"
+
+for i in {1..15}
+do
+  echo "generated value=$(($i*100))">Outer_Directory/proj"$i"_file
+  if [ $i -eq 15 ]
+  then
+    echo "Next file does not exist">>Outer_Directory/proj"$i"_file
+  fi
+  if [ $i -ne 15 ]
+  then
+    echo "Next file is proj$(($i+1))_file with value=$(($(($i+1))*100))">>Outer_Directory/proj"$i"_file
+  fi
+done
+echo "Created files"
+
+
+echo "contents of the created files"
+files=`ls Outer_Directory/`
+for f in $files
+do
+  echo $f:
+  cat Outer_Directory/$f
+done
+
+
+mkdir Outer_Directory/Inner_Directory
+echo "Inner_Directory created"
+
+files=`ls Outer_Directory/`
+for f in $files
+do
+  y=`grep '3\|6' Outer_Directory/"$f"`
+  if [ -n "$y" ]
+  then
+    mv Outer_Directory/"$f" Outer_Directory/Inner_Directory/
+  fi
+done
+
+
+echo "Outer_Directory regular files"
+files=`ls -p Outer_Directory/ | grep -v /`
+for f in $files
+do
+  echo "$f"
+done
+
+echo "Inner_Directory regular files"
+files=`ls Outer_Directory/Inner_Directory`
+for f in $files
+do
+  echo "$f"
+done
+
+echo " ">Outer_Directory/Inner_Directory/EVERYTHING
+for f in $files
+do 
+  cat Outer_Directory/Inner_Directory/$f>>Outer_Directory/Inner_Directory/EVERYTHING
+done
+
+
+files=`ls Outer_Directory/Inner_Directory`
+for f in $files
+do
+  echo "$f"
+done
+
+echo "Inner_Directory and all its files removed"
+rm -rf Outer_Directory/Inner_Directory/
+
+echo "Outer_Directory and all its files removed"
+files=`ls Outer_Directory/`
+for f in $files
+do 
+  rm Outer_Directory/$f
+done
+
+rmdir Outer_Directory
+
+echo "Current Directory"
+files=`ls`
+for f in $files
+do 
+  echo "$f"
+done
+

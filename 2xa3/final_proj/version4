@@ -1,0 +1,243 @@
+%include "simple_io.inc"
+
+;;;;done the funciton print out the body of a box
+
+global asm_main
+extern rperm
+
+section .data
+
+prompt1: db "if you want to swap, enter a,b",10,0
+prompt2: db "if you want to end, enter 0:",10,0
+err1: db "incorrect input, the first number must be in [1,8]",10,0
+err2: db "incorrect input, the second input must be a comma",10,0
+err3: db "incorrect input, the second number must be in [1,8]",10,0
+done_message: db "program done",10,0
+
+
+section .bss
+	array: resq 8
+
+section .text
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+top_bottom:		;function to display the top/bottom respect to the parameter "n"
+	enter	0,0
+	saveregs
+
+	mov	rax, [rbp+16]
+	mov	rbx, rax
+	cmp	rbx, qword 1
+	je	last	;;;;if the parameter is 1, just print one '+'.
+	;;;;;for those parameters that are not 1
+	mov	rcx, qword 2   ;rcx as counter
+	mov	al, '+'
+	call	print_char
+while:	
+	cmp	rcx, rbx
+	je	last
+	mov	al, '-'
+	call	print_char
+	add	rcx, qword 1
+	jmp	while
+
+last:
+	mov	al, '+'
+	call	print_char
+	jmp	top_bottom_end
+	
+top_bottom_end:
+	restoregs
+        leave
+        ret
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+body:			;function to draw the body of a box with parameter n
+	enter	0,0
+	saveregs
+
+	mov     rax, [rbp+16]
+	mov     rbx, rax
+	mov     rcx, qword 2   ;rcx as counter
+	mov     al, '+'
+	call    print_char
+
+while2:
+        cmp     rcx, rbx
+        je      last2
+        mov     al, ' '
+        call    print_char
+        add     rcx, qword 1
+        jmp     while2
+
+last2:
+        mov     al, '+'
+        call    print_char
+        jmp     body_end
+
+body_end:
+	restoregs
+        leave             
+        ret
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+display:		;function to display the graph of numbers in array
+	enter	0,0
+	saveregs
+
+	mov	rbx, qword 2
+	push	rbx,
+	call	body
+	add	rsp, 8
+	call	print_nl
+
+
+display_end:
+	restoregs
+        leave
+        ret
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+display_array:           ;function to print out the content of array(use for checking)
+	enter	0,0
+	saveregs
+	
+	mov rax, array    
+	mov rbx, rax       ;store the array in rbx
+	mov r12, rbx	   ;store in r12
+	mov rcx, qword 1     ;use rcx as counter
+
+LOOP:
+	mov	rax, qword [r12]
+	call	print_int    ;print the number in the array
+	mov	al, ','      
+	call	print_char   ;print the comma
+	inc	rcx	     ;increase the counter by one
+	add	r12, qword 8 ;move the pointer to the next one
+	cmp 	rcx, qword 7
+	jbe	LOOP
+	;the loop prints out 7 elements
+out_of_loop:	;print out the last element
+	mov	rax, qword [r12]
+	call	print_int
+	call	print_nl
+
+display_array_end:
+	restoregs
+	leave
+	ret
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+asm_main:	
+	enter	0,0
+	saveregs
+
+	mov	rdi, array     ;1st param for rperm
+	mov	rsi, qword 8   ;2nd param for rperm
+	call rperm
+
+	;; now the array 'array' is randomly initialzed  	
+
+	call display
+prompt:
+	mov	rax, prompt1
+	call	print_string
+	mov	rax, prompt2
+	call	print_string
+
+read:
+	;;;;;;check the first argument
+	call	read_char
+	cmp	al, '0'
+	je	asm_main_end
+	cmp	al, '1'
+	jb	error1
+	cmp	al, '8'
+	ja	error1
+	mov	r12, 0
+	mov	r12b, al
+	sub	r12b, '0'   ;;;turn the first input in to number and store in r12b
+	call	read_char   ;;;check if the second input is a comma
+	cmp	al, ','
+	jne	error2
+	call	read_char   ;;;check the second number input is in [1,8] or not
+	cmp	al, '1'
+	jb	error3
+	cmp	al, '8'
+	ja	error3
+	;;;store the number in r13b
+	mov	r13, 0
+	mov	r13b, al
+	sub	r13b, '0'
+	
+	;;;;;now swap the two input numbers' position in the array
+swap:
+	mov	r14, array
+	
+	Loop1:
+	  cmp	[r14], r12	;;;find the pointer address of the first input number
+	  je	Loop2		;;;store it in r14
+	  add	r14, 8
+	  jmp	Loop1
+	
+	Loop2:
+	  mov	r15, array
+	
+	Loop3:
+	  cmp	[r15], r13	;;;find the pointer address of the first input number
+	  je	Loop4		;;;store it in r14
+	  add	r15, 8
+	  jmp	Loop3
+	
+	Loop4:
+	  mov	[r14], r13	;;;swap the two numbers in the array
+	  mov	[r15], r12
+	  jmp	continue
+continue:
+	call	print_nl
+	call	display
+	call	print_nl
+	;;;clean the buffer
+	jmp	L1  
+
+
+error1:
+	;;;;;print the error1 message
+	call	print_nl
+	mov	rax, err1
+	call	print_string
+	;;;empty the buffer
+	L1:
+	  cmp	al, 10
+	  je	L2
+	  call	read_char
+	  jmp	L1
+	L2:
+	  jmp	prompt
+
+error2:
+	;;;print the error2 message
+	call	print_nl
+	mov	rax, err2
+	call	print_string
+	;;;empty the buffer
+	jmp	L1
+
+error3:
+	;;;print the error3 message
+	call	print_nl
+	mov	rax, err3
+	call	print_string
+	;;;empty the buffer
+	jmp	L1
+
+
+
+asm_main_end:
+	mov	rax, done_message
+	call	print_string
+	
+	restoregs
+	leave
+	ret
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

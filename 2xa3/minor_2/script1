@@ -1,0 +1,23 @@
+#!/bin/bash
+
+mkdir XXX
+
+echo " " > XXX/file1
+echo " " > XXX/file2
+echo " " > XXX/file3
+
+Files=`(find . -type f)`
+
+for f in $Files
+do
+  if [ "$(dirname $f)" != "."]
+  then
+    x=$(dirname $f)
+    y=${x:2}
+    echo $(basename $f) \($y\)
+  else
+    echo $(basename $f)
+  fi
+done
+
+rm -r XXX
