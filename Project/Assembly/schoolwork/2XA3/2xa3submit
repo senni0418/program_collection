@@ -1,0 +1,11 @@
+#!/bin/bash
+course=se2xa3
+cd
+homedir=`pwd`
+homedir=${homedir:5}
+chmod u+rwx ../$homedir
+chmod og-rw ../$homedir
+chmod og+x ../$homedir
+# now we have the right permissions
+#####################################################################
+/nfs/u30/franek/public_html/courses/se2xa3/labs/2xa3submit $1 $2 $3

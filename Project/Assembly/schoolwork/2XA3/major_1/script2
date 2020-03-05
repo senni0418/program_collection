@@ -1,0 +1,22 @@
+mkdir DIR1
+echo "DIR1 created"
+mkdir DIR1/DIR2
+echo "DIR1/DIR2 created"
+
+echo "I am file X" > DIR1/DIR2/X
+
+echo "contents of DIR2"
+echo `ls DIR1/DIR2`
+echo "contents of DIR1"
+echo `ls DIR1`
+echo "contents of current directory"
+echo `ls .`
+
+mv DIR1/DIR2/X .
+rmdir DIR1
+rm DIR1
+rm -r DIR1
+
+ls .
+
+

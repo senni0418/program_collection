@@ -1,0 +1,55 @@
+%include "simple_io.inc"
+
+global asm_main
+extern rperm
+
+section .data
+
+section .bss
+	array: resq 8
+
+section .text
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+display:           ;function to display the array
+	enter	0,0
+	saveregs
+	
+	mov rax, [rbp+16]    ;the first parameter "the array"
+	mov rbx, [rax]       ;store the array in rbx
+	mov rcx, qword 1     ;use rcx as counter
+
+LOOP:
+	mov	rax, qword [rbx]
+	call	print_int    ;print the number in the array
+	mov	al, ','      
+	call	print_char   ;print the comma
+	inc	rcx	     ;increase the counter by one
+	add	rbx, qword 8 ;move the pointer to the next one
+	cmp 	rcx, qword 7
+	jbe	LOOP
+	;the loop prints out 7 elements
+	
+
+display_end:
+	restoregs
+	leave
+	ret
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+asm_main:	
+	enter	0,0
+	saveregs
+
+	mov	rdi, array     ;1st param for rperm
+	mov	rsi, qword 8   ;2nd param for rperm
+	call rperm
+
+	;; now the array 'array' is randomly initialzed
+
+	call display
+
+	restoregs
+	leave
+	ret
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

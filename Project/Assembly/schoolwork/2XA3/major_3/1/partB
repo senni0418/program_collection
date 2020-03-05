@@ -1,0 +1,18 @@
+#ifdef _AB
+  code1();
+  return 0;
+#endif
+
+#ifdef _BC
+  code2();
+  return 0;
+#endif
+
+#ifdef _CD
+  code3();
+  return 0;
+#endif
+
+  printf("It is past midterm\n");
+  return 0;
+}

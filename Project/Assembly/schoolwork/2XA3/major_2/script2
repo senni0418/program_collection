@@ -1,0 +1,78 @@
+#!/bin/bash
+
+if [ $# -ne 3 ]
+then
+  if [ $# -ne 2 ]
+  then
+    if [ $# -ne 1 ]
+    then  
+      echo "wrong number of command line arguments"
+      echo "Usage: script2 -0 <file1> <file2>"
+      echo "    or"
+      echo "       script2 -1 <file>"
+      echo "    or"
+      echo "       script2 -2"
+    fi
+  fi
+fi
+
+
+
+if [ $# -eq 3 ]
+then 
+  if [ "$1" != "-0" ]
+  then
+    echo "incorrect command line argument: $1"
+    echo "Usage: script2 -0 <file1> <file2>"
+    echo "    or"
+    echo "       script2 -1 <file>"
+    echo "    or"
+    echo "       script2 -2"
+  fi
+  if [ "$1" = "-0" ]
+  then 
+    echo "creating file $2"
+    echo "test1">$2
+    cat $2
+  
+    echo "creating file $3"
+    echo "test2">$3
+    cat $3
+   fi
+fi
+    
+if [ $# -eq 2 ]
+then
+  if [ "$1" != "-1" ]
+  then
+    echo "incorrect command line argument: $1"
+    echo "Usage: script2 -0 <file1> <file2>"
+    echo "    or"
+    echo "       script2 -1 <file>"
+    echo "    or"
+    echo "       script2 -2"
+  fi
+  if [ "$1" = "-1" ]
+  then
+    echo "testing file $2"
+  fi
+fi    
+ 
+
+if [ $# -eq 1 ]
+then
+  if [ "$1" != "-2" ]
+  then
+    echo "incorrect command line argument: $1"
+    echo "Usage: script2 -0 <file1> <file2>"
+    echo "    or"
+    echo "       script2 -1 <file>"
+    echo "    or"
+    echo "       script2 -2"
+
+  fi
+  if [ "$1" = "-2" ]
+  then
+    echo "Goodbye"
+  fi
+fi

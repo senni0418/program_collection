@@ -1,0 +1,2 @@
+#!/bin/bash
+g++ -o q1 prog.cpp prog1.o -D_AB
