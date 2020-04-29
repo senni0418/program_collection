@@ -1,0 +1,9 @@
+SFWR ENG 2XB3
+
+Team members: student numbers  names		  macid				role(s)
+			  400196392		   Senni Tan	  tans28			Designer and Tester; Sorting Algorithm Implementation and Unit test for sorting algorithm implementation.
+			  400187110		   Zihao Du		  duz12				Designer, Researcher and Tester; Graphing algorithm implementation, Client module, Unit test for graphing algorithm.
+			  400137547		   Gengyun Wang	  wangg40			Designer and Tester; Searching Algorithm Implementation and Unit test for searching algorithm implementation
+			  400146153		   Wenzhi Wang    wangw95			Designer and Tester; Data processing implementation; Test and modify the client code implementation
+			  
+We admit the fact that the work being submitted by us is our group work.

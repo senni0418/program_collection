@@ -1,0 +1,52 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/Quartus_Prime_Lite/Project_Files/lab3_4a/simulation/qsim
+vlab3_4a
+Z1 !s110 1571776005
+!i10b 1
+!s100 m^@A;:5E6JH4mM6TXUFf90
+IWCDB4B2V=d<?^SH8YniXB3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1571776003
+8lab3_4a.vo
+Flab3_4a.vo
+L0 31
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1571776005.000000
+!s107 lab3_4a.vo|
+!s90 -work|work|lab3_4a.vo|
+!i113 1
+Z5 o-work work
+Z6 tCvgOpt 0
+vlab3_4a_vlg_vec_tst
+R1
+!i10b 1
+!s100 ?ZX9[I0cK__^:^7i>LmAP2
+I:RXkFIR<2CMQ@YA6g`Nk?0
+R2
+R0
+w1571775998
+8Waveform.vwf.vt
+FWaveform.vwf.vt
+L0 29
+R3
+r1
+!s85 0
+31
+R4
+!s107 Waveform.vwf.vt|
+!s90 -work|work|Waveform.vwf.vt|
+!i113 1
+R5
+R6

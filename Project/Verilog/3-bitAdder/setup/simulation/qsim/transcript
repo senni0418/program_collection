@@ -1,0 +1,20 @@
+# do another_lab3.do
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 00:38:17 on Oct 29,2019
+# vlog -work work another_lab3.vo 
+# -- Compiling module alu3
+# 
+# Top level modules:
+# 	alu3
+# End time: 00:38:17 on Oct 29,2019, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 00:38:17 on Oct 29,2019
+# vlog -work work Waveform.vwf.vt 
+# -- Compiling module alu3_vlg_vec_tst
+# 
+# Top level modules:
+# 	alu3_vlg_vec_tst
+# End time: 00:38:17 on Oct 29,2019, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# after#1

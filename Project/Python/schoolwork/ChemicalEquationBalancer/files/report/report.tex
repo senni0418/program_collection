@@ -1,0 +1,216 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{paralist}
+\usepackage{listings}
+\usepackage{booktabs}
+
+\oddsidemargin 0mm
+\evensidemargin 0mm
+\textwidth 160mm
+\textheight 200mm
+
+\pagestyle {plain}
+\pagenumbering{arabic}
+
+\newcounter{stepnum}
+
+\title{Assignment 2 Solution}
+\author{Senni Tan   tans28}
+\date{\today}
+
+\begin {document}
+
+\maketitle
+
+
+The assignment implementation is specified in an MIS that consists of nine modules. The modules are implementations of a library of enumerated types that represents all chemical elements, two interfaces for functions, a generic abstract data type that represents a set and its two template modules which represents sets of elements and molecules respectively, and three abstract data types that represents molecules, compounds and chemical reactions. 
+This report will be discussing the approach taken to test the implementation, the rationale for test case selections , comparison of the test results of partner files in A1 and A2, critiques of the specified design, and answers to the question related to the design in this assignment and the knowledge from lectures. Appendix E to Q are the code of my design and the partner's design for this assignment.
+
+\section{Testing of the Original Program}
+
+Testing was implemented by creating test cases in pytest and the test cases covered normal cases and boundary cases.\\
+
+\smallskip
+
+To test the functionality of Set.py, Set objects were created and used for testing all functions in Set.py.
+\begin{itemize}
+	\item add fucntion: There were two Set objects and one Set has just one extra element than another; the remain elements are the same. The add function was tested by checking if the Set was equal to the another Set after it added that extra element.
+	\item rm fucntion: There were two Set objects and one Set has just one extra element than another; the remain elements are the same. The rm function was tested by checking if the Set was equal to the another Set after it remove that extra element.
+	\item member function: There was one Set objects and an integer which was an element of that Set. The member function was tested by checking if that integer was in the Set.
+	\item size function: There was one Set and an integer that was same as the number of elements in the Set. The size function was tested by checking if the size of that Set was equal to that integer.
+	\item equals function: There were two Set objects that contained exact same elements. The test was implemented by using the equals method to check if the two Sets are equal.
+	\item to\_seq function: There were a Set object and a list which contained the same elements as the Set. The test was implemented by checking if the result of Set applied to\_seq method was equal to the list.
+	\item result: Four tests failed. The test for size method passed.
+	\item reason: The implementation of equals method that was used to compare Set objects was wrong. The equals method was implemented by checking the size and if every element contained in the Sets are the same; and to check if every element in this Set is also in that Set, the "in" expression was used then the elements were compared by pointers not the values, which caused the inaccuracy of the function.
+\end{itemize}
+
+\smallskip
+
+Test for MoleculeT.py:
+\begin{itemize}
+	\item To test the functions in MoleculeT.py, several MoleculeT objects were created and the functions were tested by comparing the equality of the functions output values and the expected output values.
+	\item result: All tests passed.
+\end{itemize}
+
+\smallskip
+
+Test for CompoundT.py:
+\begin{itemize}
+	\item To test the functions in CompoundT.py, several CompoundT objects were created and the functions were tested by comparing the equality of the functions output values and the expected output values.
+	\item result: All tests passed.
+\end{itemize}
+
+Test for ReactionT.py:
+\begin{itemize}
+	\item To test the functions in ReactionT.py, several ReactionT objects were created and the functions were tested by comparing the equality of the functions output values and the expected output values.
+	\item result: All tests passed.
+\end{itemize}
+
+
+\section{Results of Testing Partner's Code}
+
+The same result as I tested my code. All test passed except the add, rm, member, equals, to\_seq methods. The reason is that the partner implemented the equals method and member method using "in" which is in the same way I did. This caused the comparison of pointers in the tests but not values.\\
+
+\smallskip
+
+Compared with this section in A1 and in A2, I find that pytest is convinience for code testing in showing the number of tests passed and showing the number of tests failed because the result of pytest is just one line showing the combination of dots "."(passed test) and "F"(failed tested). Hard coding for tests in A1 takes more time in implementing the tests but the result will show a string on the screen indicated which tests passed and which tests failed; this is more convinent for find out and keep track of the failed tests.
+
+
+\section{Critique of Given Design Specification}
+
+Advantages:
+\begin{itemize}
+\item Consistency. The name conventions in the design are descriptive. The names of modules and functions represents the semantics well; for example, MoleculeT used for representing the chemical molecules and the add function adds and element in a Set.
+\item Essentiality. The specifications for modules and functions are neat and they don't have any unnecessary features and they don't have redundant features.
+\item Generality. The design specification is not general, it can predict how the module will be used; this benifits for actual implementation of the coding of the design.
+\item Minimality. Most of the modules are not minimal. Minimality actually cause heavy work in coding so not minimal modules are easier to implement.
+\item High Cohesion. The components in the modules are closely related so one module can use the component in other modules which is convienent for implementation because we don't need to code for the components again.
+\end{itemize}
+
+\smallskip
+
+Disadvantages:
+\begin{itemize}
+\item Consistency. There are a few exception handling in the design specification, but not thorough enough. My opinions are that every functions that has parameters should have a type check since variables in python can be any types.
+\item Hign Coupling. The modules in the desig are strongly dependent on other modules so if one module goes wrong, other modules which depend on this module will go wrong as well, which is not good for debugging.
+\item Opacity. Because the design is hign coupling, the modules are highly related to each other. If there are changes in one module, the other modules which use this module need to be changed. Then there will be a large amount of changes, which is a drawback for maintenance.
+\end{itemize}
+
+The interface does not provide the programmer with checks that will allow them to avoid generation an exception because interface is used for showing the syntax of the functions not the semantic. Therefore, there won't be any checks for exception in the interface.
+
+\section{Answers}
+
+\begin{enumerate}[a)]
+
+\item Advantages: natural language is easy to read and understand; formal specification is good for communication between people from different area because it uses a particular academic expression, anybody who has learned this expression  can read and the formal specification has no ambiguous and the formal expression is neat.\\ Disvantages: natural language has long expression and causes more time to read, moreover, natural language sometimes has ambiguous statement which is bad for communication; formal specification is hard to read and understand.
+\item ConvertElement: Read through every character in the string and find the element that the string represent and return the element. \\
+
+ConvertMolecule/ConvertCompound: Read through every character of the string and extract the elements and numbers; take the molecule H2O as example, "H" represents the element H and the number right after it represents the nuber of element H, and "O" represents the element O; convert those to elements and numbers repectively and use the original module to construct a molecule/compound by those elements and numbers and return.\\
+
+ConvertReaction: Read the string and split the string by "=", the left string represents the left side of reaction and the right string represents the right side of reaction. Then split the left/right string by "+" and the strings will represents the molecules or compounds and use the ConvertMolecule/ConvertCompound to convert each of them. Then use the original module to construct a reaction and return.
+\item In the ElementT we assign each element with a number which represents its mass. Then in the MoleculeT and CompoundT we add an instance variable "mass" and implement a function to calculate the mass and return.
+\item The coefficients in chemistry use integers instead of real numbers. To turn these float coefficients into integers, we can implement a function. First we iterate throught the list of coefficients and for each float number we use 1 divided by the float number to get its denominator. Put the denominators in a list and find the least common multiple of those numbers. Then multiple each members in the coefficients list by the least common multiple.
+Here is the link for finding the least common multiple: https://www.geeksforgeeks.org/finding-lcm-two-array-numbers-without-using-gcd/
+\item In a statically typed language, every variable is bounded to a type or to an object; once the variable is bounded to a type, it can be bounded only to the objects of that type. In dynamically typed language, every variable won't be bounded to a type, it can be any types.\\
+
+Advantages: static typing is better for reading and understanding the code, and it also benifits for reducing errors; dynamic typing is easier for writing the code and it's more tolerant to change. Disavantages: in static typing the program will occur more type errors and it is less tolerant to change; in dynamic typing it is easy to mess up the types between variables because there is no declaration of variables for you to read and figure out.
+\item $[$(x,y) for x,y in range(10) if x,y\%2 == 1 and x $<$ y $]$
+\item map(sum, [1 for x in list])
+\item Interface is like syntax; it gives us the structure on how the module will be built. Implementation is like semantic; it gives us the information about what the module does.
+\item i
+	\begin{enumerate}[i)]
+	\item Abstraction guides the design of a module's interface by the process of focusing on what is important while ignoring what is irrelevant in the interface, and abstraction produces a model of an entity in which the irrelevant details of the entity are left out in the interface.
+	\item Anticipation of change guides the design of module's interface by information hiding in the interface.
+	\item Generality guides the design of module's interface by solving a more general problem than the problem at hand whenever possible in the interface.
+	\item Modularity guides the design of module's interface by applying that different parts of the system are considered separately through the interface and the parts of the system are considered separately from their composition by interface.
+	\item Separation of concerns guides the design of module's interface by isolating and considering different concerns separately in different modules through the interface.
+	\end{enumerate}
+\end{enumerate}
+
+
+\newpage
+
+\lstset{language=Python, basicstyle=\tiny, breaklines=true, showspaces=false,
+  showstringspaces=false, breakatwhitespace=true}
+%\lstset{language=C,linewidth=.94\textwidth,xleftmargin=1.1cm}
+
+\def\thesection{\Alph{section}}
+
+\section{Code for ChemTypes.py}
+
+\noindent \lstinputlisting{../src/ChemTypes.py}
+
+\newpage
+
+\section{Code for ChemEntity.py}
+
+\noindent \lstinputlisting{../src/ChemEntity.py}
+
+\newpage
+
+\section{Code for Equality.py}
+
+\noindent \lstinputlisting{../src/Equality.py}
+
+\newpage
+
+\section{Code for Set.py}
+
+\noindent \lstinputlisting{../src/Set.py}
+
+\newpage
+
+\section{Code for ElmSet.py}
+
+\noindent \lstinputlisting{../src/ElmSet.py}
+
+\newpage
+
+\section{Code for MolecSet.py}
+
+\noindent \lstinputlisting{../src/MolecSet.py}
+
+\newpage
+
+\section{Code for CompoundT.py}
+
+\noindent \lstinputlisting{../src/CompoundT.py}
+
+\newpage
+
+\section{Code for ReactionT.py}
+
+\noindent \lstinputlisting{../src/ReactionT.py}
+
+\newpage
+
+\section{Code for test\_All.py}
+
+\noindent \lstinputlisting{../src/test_All.py}
+
+\newpage
+
+\section{Code for Partner's Set.py}
+
+\noindent \lstinputlisting{../partner/Set.py}
+
+\newpage
+
+\section{Code for Partner's MoleculeT.py}
+
+\noindent \lstinputlisting{../partner/MoleculeT.py}
+
+\newpage
+
+\section{Code for Partner's CompoundT.py}
+
+\noindent \lstinputlisting{../partner/CompoundT.py}
+
+\newpage
+
+\section{Code for Partner's ReactionT.py}
+
+\noindent \lstinputlisting{../partner/ReactionT.py}
+
+\end {document}
