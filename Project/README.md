@@ -1,15 +1,18 @@
 # Content
-C\n
+C:
 	expression Tree
 	Fibonacci Pixels
 	CSV File Sorting
 	Image Process: Filter
-Java
+
+Java:
 	JobSeeker
 	Tour Generator
-Python
+
+Python:
 	Chemical Equation Balancer
-Verilog
+
+Verilog:
 	3-bit Adder
 	digital combination lock
 	LED segmentNumber display
