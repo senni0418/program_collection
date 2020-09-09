@@ -5,4 +5,4 @@ In the "programming practice" folder, there will be some programming practice th
 
 The "Project" contains the projects that I had done. The projects are sorted in different languages. There are two sub directories in each, "extra" and "schoolwork". "schoolwork" contains projects done in regular courses and "extra" contains projects done in extracurricular time.
 
-There is a README.doc
+There is an introduction document in each program's folder; the document gives an introduction on the program and also the usage.
