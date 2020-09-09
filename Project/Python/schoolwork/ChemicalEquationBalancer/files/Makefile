@@ -8,7 +8,7 @@ RMDIR = rm -rf
 .PHONY: test doc clean
 
 test:
-	$(PY) $(PYFLAGS) src
+	$(PY) $(PYFLAGS) ./src
 
 doc:
 	$(DOXY) $(DOXYCFG)

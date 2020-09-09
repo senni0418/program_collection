@@ -52,7 +52,7 @@ class MoleculeT(ChemEntity, Equality):
         return (self.elm == m.get_elm()) & (self.num == m.get_num())
 
 
-'''test
+'''
 H2 = MoleculeT(2, ElementT.H)
 print(H2.get_num())
 print(H2.get_elm())

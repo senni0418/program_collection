@@ -261,3 +261,18 @@ class ReactionT():
     #  equation
     def get_rhs_coeff(self):
         return self.coeffR
+
+'''
+H2 = MoleculeT(2, ElementT.H)
+O2 = MoleculeT(2, ElementT.O)
+O = MoleculeT(1, ElementT.O)
+H2O = CompoundT(MolecSet([H2, O]))
+left = [H2, O2]
+right = [H2O]
+final = ReactionT(left, right)
+for i in final.get_lhs_coeff():
+	print(i)
+for i in final.get_rhs_coeff():
+	print(i)
+
+'''

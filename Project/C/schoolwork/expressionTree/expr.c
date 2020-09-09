@@ -52,7 +52,7 @@ Node *binop(Operation op, Node *a, Node *b) {
   case divop:
     s1 = makeString("(", a->expr_string, ")");
     s2 = makeString("(", b->expr_string, ")");
-    s = makeString(s1, "*", s2);
+    s = makeString(s1, "/", s2);
     n = createNode(s, 0);
     free(s1);
     free(s2);

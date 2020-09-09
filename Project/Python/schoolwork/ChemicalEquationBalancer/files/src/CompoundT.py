@@ -49,15 +49,20 @@ class CompoundT(ChemEntity, Equality):
     def equals(self, D):
         this = self.molec_set
         that = D.get_molec_set()
-        if not this.size() == that.size():
+        num = 0
+        if not len(this.s) == len(that.s):
             return False
-        for i in list(this.s):
-            if not that.member(i):
-                return False
-        return True
+        for i in range(len(this.s)):
+            for j in range(len(this.s)):
+                if this.s[i].equals(that.s[j]):
+                    num += 1
+        if num == len(this.s):
+            return True
+        return False
+				
 
 
-'''test
+'''
 O = MoleculeT(1, ElementT.O)
 H2 = MoleculeT(2, ElementT.H)
 a = MoleculeT(4, ElementT.H)

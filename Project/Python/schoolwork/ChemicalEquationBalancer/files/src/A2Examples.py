@@ -27,7 +27,7 @@ print(S == R)
 
 print(str(R.to_seq()))
 
-for i in R:
+for i in R.s:
     print(i)
 
 # ElmSet Examples

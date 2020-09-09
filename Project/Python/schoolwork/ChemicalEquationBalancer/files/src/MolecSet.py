@@ -14,7 +14,7 @@ class MolecSet(Set):
     pass
 
 
-'''test
+'''
 H2 = MoleculeT(2, ElementT.H)
 O2 = MoleculeT(2, ElementT.O)
 N2 = MoleculeT(2, ElementT.N)

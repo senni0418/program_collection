@@ -14,19 +14,19 @@ class ElmSet(Set):
     pass
 
 
-'''test
+'''
 a = ElmSet([ElementT.H, ElementT.He, ElementT.Li, ElementT.Be, ElementT.B])
 b = ElmSet([ElementT.C, ElementT.N, ElementT.O, ElementT.F, ElementT.Ne])
 c = ElmSet([ElementT.H, ElementT.He, ElementT.Li, ElementT.Be, ElementT.B])
 d = ElmSet([ElementT.C, ElementT.N, ElementT.O, ElementT.F, ElementT.Ne])
 print(a.s)
 print(b.s)
-print(a.equals(c.s))
+print(a.equals(c))
 a.rm(ElementT.B)
-print(a.equals(c.s))
+print(a.equals(c))
 print(a.s)
 a.add(ElementT.B)
-print(a.equals(c.s))
+print(a.equals(c))
 print(a.s)
 print(b.member(ElementT.Ne))
 print(b.member(ElementT.V))

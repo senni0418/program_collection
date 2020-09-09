@@ -23,14 +23,14 @@ class TestSet:
     def test_add(self):
         nums = Set([1, 2, 3, 4])
         nums.add(5)
-        assert nums.equals(Set([1, 2, 3, 4, 5]).s)
+        assert nums.equals(Set([1, 2, 3, 4, 5]))
 
     ## @brief Methods to test the rm method of the Set class
     def test_rm(self):
         s1 = Set([1, 2, 3, 4])
         expect = Set([1, 2, 3])
         s1.rm(4)
-        assert s1.equals(expect.s)
+        assert s1.equals(expect)
 
     ## @brief Methods to test the member method of the Set class
     def test_member(self):
@@ -47,7 +47,7 @@ class TestSet:
     def test_equals(self):
         s1 = Set([1, 2, 3, 4])
         s2 = Set([1, 2, 3, 4])
-        assert s1.equals(s2.s)
+        assert s1.equals(s2)
 
     ## @brief Methods to test the to_seq method of the Set class
     def test_to_seq(self):
