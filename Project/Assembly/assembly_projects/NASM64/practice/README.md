@@ -1,0 +1,1 @@
+This folder contains the scripts written in NASM-64 assembly language and used for practice in the process of learning assembly script.
