@@ -1,0 +1,2 @@
+age=Middle-aged,sex=Male,education=Bachelors,native-country=United-States,race=White,marital-status=Never-married,workclass=State-gov,occupation=Adm-clerical,hours-per-week=Full-time,income=Small,capital-gain=Low,capital-loss=None
+age=Senior,sex=Male,education=Bachelors,native-country=United-States,race=White,marital-status=Married-civ-spouse,workclass=Self-emp-not-inc,occupation=Exec-managerial,hours-per-week=Part-time,income=Small,capital-gain=None,capital-loss=None
