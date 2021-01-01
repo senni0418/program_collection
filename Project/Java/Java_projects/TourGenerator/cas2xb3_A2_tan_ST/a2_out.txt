@@ -1,0 +1,17 @@
+BFS: BOSTON, NEW YORK CITY, PITTSBURGH, COLUMBUS, CHICAGO, MINNEAPOLIS;
+DFS: BOSTON, NEW YORK CITY, PHILADELPHIA, BALTIMORE, WASHINGTON, CHARLOTTE, ATLANTA, NASHVILLE, COLUMBUS, INDIANAPOLIS, ST. LOUIS, KANSAS CITY, DENVER, SALT LAKE CITY, LAS VEGAS, LOS ANGELES, SAN FRANCISCO, PORTLAND, SEATTLE, MINNEAPOLIS;
+Dijkstra Algorithms: 
+City                 Meal Choice                              Cost of Meal        
+
+BOSTON               null                                     null                
+
+NEW YORK CITY        McChicken - Meal                         3.79                
+
+PITTSBURGH           Double Cheeseburger - Meal               4.38                
+
+COLUMBUS             McChicken - Meal                         3.79                
+
+CHICAGO              Double Cheeseburger - Meal               4.38                
+
+MINNEAPOLIS          McChicken - Meal                         3.79                
+

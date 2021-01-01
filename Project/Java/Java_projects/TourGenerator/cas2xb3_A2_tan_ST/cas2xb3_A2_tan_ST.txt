@@ -1,0 +1,10 @@
+Senni Tan
+I admit the fact that the work being submitted by me is my individual work.
+
+Notice:
+   The implementation of DirectedEdge, EdgeWeightedDigraph, BFS, DFS and IndexMinPQ
+   are based on the concepts from textbook; the code may similar to those on textbook
+   but not the same.[1]
+   
+Reference:
+[1] R. Sedgewick and K. Wayne, Algotithms, 4th edition.
