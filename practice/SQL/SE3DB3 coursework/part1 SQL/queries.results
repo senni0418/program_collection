@@ -1,0 +1,726 @@
+connect to SE3DB3
+
+   Database Connection Information
+
+ Database server        = DB2/LINUXX8664 10.5.3
+ SQL authorization ID   = TANS28
+ Local database alias   = SE3DB3
+
+---q1
+select count(*) from player_mast
+
+1          
+-----------
+        552
+
+  1 record(s) selected.
+
+---q2
+select * from player_mast
+
+PLAYER_ID   TEAM_ID     JERSEY_NO   PLAYER_NAME                              POSI_TO_PLAY DT_OF_BIR  AGE         PLAYING_CLUB                            
+----------- ----------- ----------- ---------------------------------------- ------------ ---------- ----------- ----------------------------------------
+     160001        1901           1 Etrit Berisha                            GK           03/10/1989          27 Lazio                                   
+     160008        1901           2 Andi Lila                                DF           02/12/1986          30 Giannina                                
+     160016        1901           3 Ermir Lenjani                            MF           08/05/1989          26 Nantes                                  
+     160007        1901           4 Elseid Hysaj                             DF           02/20/1994          22 Napoli                                  
+     160013        1901           5 Lorik Cana                               MF           07/27/1983          32 Nantes                                  
+     160010        1901           6 Frederic Veseli                          DF           11/20/1992          23 Lugano                                  
+     160004        1901           7 Ansi Agolli                              DF           10/11/1982          33 Qarabag                                 
+     160012        1901           8 Migjen Basha                             MF           01/05/1987          29 Como                                    
+     160017        1901           9 Ledian Memushaj                          MF           12/17/1986          29 Pescara                                 
+     160023        1901          10 Armando Sadiku                           FD           05/27/1991          25 Vaduz                                   
+     160022        1901          11 Shkelzen Gashi                           FD           07/15/1988          27 Colorado                                
+     160003        1901          12 Orges Shehi                              GK           09/25/1977          38 Skenderbeu                              
+     160015        1901          13 Burim Kukeli                             MF           01/16/1984          32 Zurich                                  
+     160019        1901          14 Taulant Xhaka                            MF           03/28/1991          25 Basel                                   
+     160009        1901          15 Mergim Mavraj                            DF           06/09/1986          30 Koln                                    
+     160021        1901          16 Sokol Cikalleshi                         FD           07/27/1990          25 Istanbul Basaksehir                     
+     160006        1901          17 Naser Aliji                              DF           12/27/1993          22 Basel                                   
+     160005        1901          18 Arlind Ajeti                             DF           09/25/1993          22 Frosinone                               
+     160020        1901          19 Bekim Balaj                              FD           01/11/1991          25 Rijeka                                  
+     160014        1901          20 Ergys Kace                               MF           07/08/1993          22 PAOK                                    
+     160018        1901          21 Odise Roshi                              MF           05/22/1991          25 Rijeka                                  
+     160011        1901          22 Amir Abrashi                             MF           03/27/1990          26 Freiburg                                
+     160002        1901          23 Alban Hoxha                              GK           11/23/1987          28 Partizani                               
+     160024        1902           1 Robert Almer                             GK           03/20/1984          32 Austria Wien                            
+     160036        1902           2 Gyorgy Garics                            MF           03/08/1984          32 Darmstadt                               
+     160027        1902           3 Aleksandar Dragovic                      DF           03/06/1991          25 Dynamo Kyiv                             
+     160029        1902           4 Martin Hinteregger                       DF           09/07/1992          23 Monchengladbach                         
+     160028        1902           5 Christian Fuchs                          DF           04/07/1986          30 Leicester                               
+     160038        1902           6 Stefan Ilsanker                          MF           05/18/1989          27 Leipzig                                 
+     160043        1902           7 Marko Arnautovic                         FD           04/19/1989          27 Stoke                                   
+     160034        1902           8 David Alaba                              MF           06/24/1992          23 Bayern                                  
+     160046        1902           9 Rubin Okotie                             FD           06/06/1987          29 1860 Munchen                            
+     160040        1902          10 Zlatko Junuzovic                         MF           09/26/1987          28 Bremen                                  
+     160037        1902          11 Martin Harnik                            MF           06/10/1987          29 Stuttgart                               
+     160025        1902          12 Heinz Lindner                            GK           07/17/1990          25 Frankfurt                               
+     160032        1902          13 Markus Suttner                           DF           04/16/1987          29 Ingolstadt                              
+     160035        1902          14 Julian Baumgartlinger                    MF           01/02/1988          28 Mainz                                   
+     160031        1902          15 Sebastian Prodl                          DF           06/21/1987          28 Watford                                 
+     160033        1902          16 Kevin Wimmer                             DF           11/15/1992          23 Tottenham                               
+     160030        1902          17 Florian Klein                            DF           11/17/1986          29 Stuttgart                               
+     160042        1902          18 Alessandro Schopf                        MF           02/07/1994          22 Schalke                                 
+     160044        1902          19 Lukas Hinterseer                         FD           03/28/1991          25 Ingolstadt                              
+     160041        1902          20 Marcel Sabitzer                          MF           03/17/1994          22 Leipzig                                 
+     160045        1902          21 Marc Janko                               FD           06/25/1983          32 Basel                                   
+     160039        1902          22 Jakob Jantscher                          MF           01/08/1989          27 Luzern                                  
+     160026        1902          23 Ramazan Ozcan                            GK           06/28/1984          31 Ingolstadt                              
+     160047        1903           1 Thibaut Courtois                         GK           05/11/1992          24 Chelsea                                 
+     160050        1903           2 Toby Alderweireld                        DF           03/02/1989          27 Tottenham                               
+     160056        1903           3 Thomas Vermaelen                         DF           11/14/1985          30 Barcelona                               
+     160063        1903           4 Radja Nainggolan                         MF           05/04/1988          28 Roma                                    
+     160057        1903           5 Jan Vertonghen                           DF           04/24/1987          29 Tottenham                               
+     160064        1903           6 Axel Witsel                              MF           01/12/1989          27 Zenit                                   
+     160059        1903           7 Kevin De Bruyne                          MF           06/28/1991          24 Man. City                               
+     160061        1903           8 Marouane Fellaini                        MF           11/22/1987          28 Man. United                             
+     160067        1903           9 Romelu Lukaku                            FD           05/13/1993          23 Everton                                 
+     160062        1903          10 Eden Hazard                              MF           01/07/1991          25 Chelsea                                 
+     160058        1903          11 Yannick Carrasco                         MF           09/04/1993          22 Atletico                                
+     160049        1903          12 Simon Mignolet                           GK           08/06/1988          27 Liverpool                               
+     160048        1903          13 Jean-Francois Gillet                     GK           05/31/1979          37 Mechelen                                
+     160068        1903          14 Dries Mertens                            FD           05/06/1987          29 Napoli                                  
+     160052        1903          15 Jason Denayer                            DF           06/28/1995          20 Galatasaray                             
+     160055        1903          16 Thomas Meunier                           DF           09/12/1991          24 Club Brugge                             
+     160069        1903          17 Divock Origi                             FD           04/18/1995          21 Liverpool                               
+     160053        1903          18 Christian Kabasele                       DF           02/24/1991          25 Genk                                    
+     160060        1903          19 Mousa Dembele                            MF           07/16/1987          28 Tottenham                               
+     160066        1903          20 Christian Benteke                        FD           12/03/1990          25 Liverpool                               
+     160054        1903          21 Jordan Lukaku                            DF           07/25/1994          21 Oostende                                
+     160065        1903          22 Michy Batshuayi                          FD           10/02/1993          22 Marseille                               
+     160051        1903          23 Laurent Ciman                            DF           08/05/1985          30 Montreal                                
+     160072        1904           1 Ivan Vargic                              GK           03/15/1987          29 Rijeka                                  
+     160079        1904           2 Sime Vrsaljko                            DF           01/10/1992          24 Sassuolo                                
+     160077        1904           3 Ivan Strinic                             DF           07/17/1987          28 Napoli                                  
+     160085        1904           4 Ivan PeriSic                             MF           02/02/1989          27 Internazionale                          
+     160073        1904           5 Vedran Corluka                           DF           02/05/1986          30 Lokomotiv Moskva                        
+     160074        1904           6 Tin Jedvaj                               DF           11/28/1995          20 Leverkusen                              
+     160086        1904           7 Ivan Rakitic                             MF           03/10/1988          28 Barcelona                               
+     160083        1904           8 Mateo Kovacic                            MF           05/06/1994          22 Real Madrid                             
+     160090        1904           9 Andrej Kramaric                          FD           06/19/1991          24 Hoffenheim                              
+     160084        1904          10 Luka Modric                              MF           09/09/1985          30 Real Madrid                             
+     160076        1904          11 Darijo Srna                              DF           05/01/1982          34 Shakhtar Donetsk                        
+     160070        1904          12 Lovre Kalinic                            GK           04/03/1990          26 Hajduk Split                            
+     160075        1904          13 Gordon Schildenfeld                      DF           03/18/1985          31 Dinamo Zagreb                           
+     160081        1904          14 Marcelo Brozovic                         MF           11/16/1992          23 Internazionale                          
+     160087        1904          15 Marko Rog                                MF           07/19/1995          20 Dinamo Zagreb                           
+     160089        1904          16 Nikola Kalinic                           FD           01/05/1988          28 Fiorentina                              
+     160091        1904          17 Mario Mandzukic                          FD           05/21/1986          30 Juventus                                
+     160082        1904          18 Ante Coric                               MF           04/14/1997          19 Dinamo Zagreb                           
+     160080        1904          19 Milan Badelj                             MF           02/25/1989          27 Fiorentina                              
+     160092        1904          20 Marko Pjaca                              FD           05/06/1995          21 Dinamo Zagreb                           
+     160078        1904          21 Domagoj Vida                             DF           04/29/1989          27 Dynamo Kyiv                             
+     160088        1904          22 Duje Cop                                 FD           02/01/1990          26 Malaga                                  
+     160071        1904          23 Danijel SubaSic                          GK           10/27/1984          31 Monaco                                  
+     160093        1905           1 Petr Cech                                GK           05/20/1982          34 Arsenal                                 
+     160098        1905           2 Pavel Kaderabek                          DF           04/25/1992          24 Hoffenheim                              
+     160099        1905           3 Michal Kadlec                            DF           12/13/1984          31 Fenerbahce                              
+     160096        1905           4 Theodor Gebre Selassie                   DF           12/24/1986          29 Bremen                                  
+     160097        1905           5 Roman Hubnik                             DF           06/06/1984          32 Plzen                                   
+     160101        1905           6 TomasSivok                               DF           09/15/1983          32 Bursaspor                               
+     160114        1905           7 TomasNecid                               FD           08/13/1989          26 Bursaspor                               
+     160100        1905           8 David Limbersky                          DF           10/06/1983          32 Plzen                                   
+     160104        1905           9 Borek Dockal                             MF           09/30/1988          27 Sparta Praha                            
+     160110        1905          10 TomasRosicky                             MF           10/04/1980          35 Arsenal                                 
+     160109        1905          11 Daniel Pudil                             MF           09/27/1985          30 Sheff. Wednesday                        
+     160115        1905          12 Milan Skoda                              FD           01/16/1986          30 Slavia Praha                            
+     160108        1905          13 Jaroslav PlaSil                          MF           01/05/1982          34 Bordeaux                                
+     160105        1905          14 Daniel Kolar                             MF           10/27/1985          30 Plzen                                   
+     160107        1905          15 David Pavelka                            MF           05/18/1991          25 Kasimpasa                               
+     160095        1905          16 TomasVaclik                              GK           03/29/1989          27 Basel                                   
+     160102        1905          17 Marek Suchy                              DF           03/29/1988          28 Basel                                   
+     160112        1905          18 Josef Sural                              MF           05/30/1990          26 Sparta Praha                            
+     160106        1905          19 Ladislav Krejci                          MF           07/05/1992          23 Sparta Praha                            
+     160111        1905          20 Jiri Skalak                              MF           03/12/1992          24 Brighton                                
+     160113        1905          21 David Lafata                             FD           09/18/1981          34 Sparta Praha                            
+     160103        1905          22 Vladimir Darida                          MF           08/08/1990          25 Hertha                                  
+     160094        1905          23 TomasKoubek                              GK           08/26/1992          23 Liberec                                 
+     160117        1906           1 Joe Hart                                 GK           04/19/1987          29 Man. City                               
+     160125        1906           2 Kyle Walker                              DF           05/28/1990          26 Tottenham                               
+     160122        1906           3 Danny Rose                               DF           07/02/1990          25 Tottenham                               
+     160131        1906           4 James Milner                             MF           01/04/1986          30 Liverpool                               
+     160120        1906           5 Gary Cahill                              DF           12/19/1985          30 Chelsea                                 
+     160123        1906           6 Chris Smalling                           DF           11/22/1989          26 Man. United                             
+     160132        1906           7 Raheem Sterling                          MF           12/08/1994          21 Man. City                               
+     160130        1906           8 Adam Lallana                             MF           05/10/1988          28 Liverpool                               
+     160134        1906           9 Harry Kane                               FD           07/28/1993          22 Tottenham                               
+     160136        1906          10 Wayne Rooney                             FD           10/24/1985          30 Man. United                             
+     160138        1906          11 Jamie Vardy                              FD           01/11/1987          29 Leicester                               
+     160121        1906          12 Nathaniel Clyne                          DF           04/05/1991          25 Liverpool                               
+     160116        1906          13 Fraser Forster                           GK           03/17/1988          28 Southampton                             
+     160129        1906          14 Jordan Henderson                         MF           06/17/1990          26 Liverpool                               
+     160137        1906          15 Daniel Sturridge                         FD           09/01/1989          26 Liverpool                               
+     160124        1906          16 John Stones                              DF           05/28/1994          22 Everton                                 
+     160128        1906          17 Eric Dier                                MF           01/15/1994          22 Tottenham                               
+     160133        1906          18 Jack Wilshere                            MF           01/01/1992          24 Arsenal                                 
+     160127        1906          19 Ross Barkley                             MF           12/05/1993          22 Everton                                 
+     160126        1906          20 Dele Alli                                MF           04/11/1996          20 Tottenham                               
+     160119        1906          21 Ryan Bertrand                            DF           08/05/1989          26 Southampton                             
+     160135        1906          22 Marcus Rashford                          FD           10/31/1997          18 Man. United                             
+     160118        1906          23 Tom Heaton                               GK           04/15/1986          30 Burnley                                 
+     160140        1907           1 Hugo Lloris                              GK           12/26/1986          29 Tottenham                               
+     160144        1907           2 Christophe Jallet                        DF           10/31/1983          32 Lyon                                    
+     160143        1907           3 Patrice Evra                             DF           05/15/1981          35 Juventus                                
+     160147        1907           4 Adil Rami                                DF           12/27/1985          30 Sevilla                                 
+     160152        1907           5 NGolo Kante                              MF           03/29/1991          25 Leicester                               
+     160150        1907           6 Yohan Cabaye                             MF           01/14/1986          30 Crystal Palace                          
+     160160        1907           7 Antoine Griezmann                        FD           03/21/1991          25 Atletico                                
+     160154        1907           8 Dimitri Payet                            MF           03/29/1987          29 West Ham                                
+     160159        1907           9 Olivier Giroud                           FD           09/30/1986          29 Arsenal                                 
+     160158        1907          10 Andre-Pierre Gignac                      FD           12/05/1985          30 Tigres                                  
+     160161        1907          11 Anthony Martial                          FD           12/05/1995          20 Man. United                             
+     160156        1907          12 Morgan Schneiderlin                      MF           11/08/1989          26 Man. United                             
+     160146        1907          13 Eliaquim Mangala                         DF           02/13/1991          25 Man. City                               
+     160153        1907          14 Blaise Matuidi                           MF           04/09/1987          29 Paris                                   
+     160155        1907          15 Paul Pogba                               MF           03/15/1993          23 Juventus                                
+     160141        1907          16 Steve Mandanda                           GK           03/28/1985          31 Marseille                               
+     160142        1907          17 Lucas Digne                              DF           07/20/1993          22 Roma                                    
+     160157        1907          18 Moussa Sissoko                           MF           08/16/1989          26 Newcastle                               
+     160148        1907          19 Bacary Sagna                             DF           02/14/1983          33 Man. City                               
+     160151        1907          20 Kingsley Coman                           MF           06/13/1996          20 Bayern                                  
+     160145        1907          21 Laurent Koscielny                        DF           09/10/1985          30 Arsenal                                 
+     160149        1907          22 Samuel Umtiti                            DF           11/14/1993          22 Lyon                                    
+     160139        1907          23 Benoit Costil                            GK           07/03/1987          28 Rennes                                  
+     160163        1908           1 Manuel Neuer                             GK           03/27/1986          30 Bayern                                  
+     160170        1908           2 Shkodran Mustafi                         DF           04/17/1992          24 Valencia                                
+     160166        1908           3 Jonas Hector                             DF           05/27/1990          26 Koln                                    
+     160167        1908           4 Benedikt Howedes                         DF           02/29/1988          28 Schalke                                 
+     160168        1908           5 Mats Hummels                             DF           12/16/1988          27 Dortmund                                
+     160175        1908           6 Sami Khedira                             MF           04/04/1987          29 Juventus                                
+     160180        1908           7 Bastian Schweinsteiger                   MF           08/01/1984          31 Man. United                             
+     160177        1908           8 Mesut ozil                               MF           10/15/1988          27 Arsenal                                 
+     160179        1908           9 Andre Schurrle                           MF           11/06/1990          25 Wolfsburg                               
+     160184        1908          10 Lukas Podolski                           FD           06/04/1985          31 Galatasaray                             
+     160173        1908          11 Julian Draxler                           MF           09/20/1993          22 Wolfsburg                               
+     160162        1908          12 Bernd Leno                               GK           03/04/1992          24 Leverkusen                              
+     160183        1908          13 Thomas Muller                            FD           09/13/1989          26 Bayern                                  
+     160172        1908          14 Emre Can                                 MF           01/12/1994          22 Liverpool                               
+     160181        1908          15 Julian Weigl                             MF           09/08/1995          20 Dortmund                                
+     160171        1908          16 Jonathan Tah                             DF           02/11/1996          20 Leverkusen                              
+     160165        1908          17 Jerome Boateng                           DF           09/03/1988          27 Bayern                                  
+     160176        1908          18 Toni Kroos                               MF           01/04/1990          26 Real Madrid                             
+     160174        1908          19 Mario Gotze                              MF           06/03/1992          24 Bayern                                  
+     160178        1908          20 Leroy Sane                               MF           01/11/1996          20 Schalke                                 
+     160169        1908          21 Joshua Kimmich                           DF           02/08/1995          21 Bayern                                  
+     160164        1908          22 Marc-Andre ter Stegen                    GK           04/30/1992          24 Barcelona                               
+     160182        1908          23 Mario Gomez                              FD           07/10/1985          30 Besiktas                                
+     160187        1909           1 Gabor Kiraly                             GK           04/01/1976          40 Haladas                                 
+     160194        1909           2 Adam Lang                                DF           01/17/1993          23 Videoton                                
+     160193        1909           3 Mihaly Korhut                            DF           12/01/1988          27 Debrecen                                
+     160192        1909           4 Tamas Kadar                              DF           03/14/1990          26 Lech                                    
+     160189        1909           5 Attila Fiola                             DF           02/17/1990          26 Puskas Akademia                         
+     160196        1909           6 Akos Elek                                MF           07/21/1988          27 Diosgyor                                
+     160202        1909           7 Balazs Dzsudzsak                         FD           12/23/1986          29 Bursaspor                               
+     160199        1909           8 Adam Nagy                                MF           06/17/1995          21 Ferencvaros                             
+     160207        1909           9 Adam Szalai                              FD           12/09/1987          28 Hannover                                
+     160203        1909          10 Zoltan Gera                              FD           04/22/1979          37 Ferencvaros                             
+     160204        1909          11 Krisztian Nemeth                         FD           01/05/1989          27 Al-Gharafa                              
+     160185        1909          12 Denes Dibusz                             GK           11/16/1990          25 Ferencvaros                             
+     160201        1909          13 Daniel Bode                              FD           10/24/1986          29 Ferencvaros                             
+     160198        1909          14 Gergo Lovrencsics                        MF           09/01/1988          27 Lech                                    
+     160197        1909          15 Laszlo Kleinheisler                      MF           04/08/1994          22 Bremen                                  
+     160195        1909          16 adam Pinter                              DF           06/12/1988          28 Ferencvaros                             
+     160205        1909          17 Nemanja Nikolic                          FD           12/31/1987          28 Legia                                   
+     160200        1909          18 Zoltan Stieber                           MF           10/16/1988          27 Nurnberg                                
+     160206        1909          19 Tamas Priskin                            FD           09/27/1986          29 Slovan Bratislava                       
+     160190        1909          20 Richard Guzmics                          DF           04/16/1987          29 Wisla                                   
+     160188        1909          21 Barnabas Bese                            DF           05/06/1994          22 MTK                                     
+     160186        1909          22 Peter Gulacsi                            GK           05/06/1990          26 Leipzig                                 
+     160191        1909          23 Roland Juhasz                            DF           07/01/1983          32 Videoton                                
+     160208        1910           1 Hannes Halldorsson                       GK           04/27/1984          32 Bodo/Glimt                              
+     160216        1910           2 Birkir Saevarsson                        DF           11/11/1984          31 Hammarby                                
+     160212        1910           3 Haukur Heidar Hauksson                   DF           09/01/1991          24 AIK                                     
+     160213        1910           4 Hjortur Hermannsson                      DF           02/08/1995          21 Goteborg                                
+     160214        1910           5 Sverrir Ingason                          DF           08/05/1993          22 Lokeren                                 
+     160217        1910           6 Ragnar Sigurdsson                        DF           06/19/1986          29 Krasnodar                               
+     160229        1910           7 Johann Gudmundsson                       FD           10/27/1990          25 Charlton                                
+     160221        1910           8 Birkir Bjarnason                         MF           05/27/1988          28 Basel                                   
+     160230        1910           9 Kolbeinn Sigthorsson                     FD           03/14/1990          26 Nantes                                  
+     160224        1910          10 Gylfi Sigurdsson                         MF           09/08/1989          26 Swansea                                 
+     160227        1910          11 Alfred Finnbogason                       FD           02/01/1989          27 Augsburg                                
+     160210        1910          12 Ogmundur Kristinsson                     GK           06/19/1989          26 Hammarby                                
+     160209        1910          13 Ingvar Jonsson                           GK           10/18/1989          26 Sandefjord                              
+     160220        1910          14 Kari Arnason                             MF           10/13/1982          33 Malmo                                   
+     160226        1910          15 Jon Dadi Bodvarsson                      FD           05/25/1992          24 Kaiserslautern                          
+     160225        1910          16 Runar Mar Sigurjonsson                   MF           06/18/1990          26 Sundsvall                               
+     160222        1910          17 Aron Gunnarsson                          MF           04/22/1989          27 Cardiff                                 
+     160211        1910          18 Elmar Bjarnason                          DF           03/04/1987          29 AGF                                     
+     160215        1910          19 Hordur Magnusson                         DF           02/11/1993          23 Cesena                                  
+     160223        1910          20 Emil Hallfredsson                        MF           06/29/1984          31 Udinese                                 
+     160219        1910          21 Arnor Ingvi Traustason                   DF           04/30/1993          23 Norrkoping                              
+     160228        1910          22 Eidur Gudjohnsen                         FD           09/15/1978          37 Molde                                   
+     160218        1910          23 Ari Skulason                             DF           05/14/1987          29 OB                                      
+     160231        1911           1 Gianluigi Buffon                         GK           01/28/1978          38 Juventus                                
+     160238        1911           2 Mattia De Sciglio                        DF           10/20/1992          23 Milan                                   
+     160236        1911           3 Giorgio Chiellini                        DF           08/14/1984          31 Juventus                                
+     160237        1911           4 Matteo Darmian                           DF           12/02/1989          26 Man. United                             
+     160239        1911           5 Angelo Ogbonna                           DF           05/23/1988          28 West Ham                                
+     160241        1911           6 Antonio Candreva                         MF           02/28/1987          29 Lazio                                   
+     160253        1911           7 Simone Zaza                              FD           06/25/1991          24 Juventus                                
+     160243        1911           8 Alessandro Florenzi                      MF           03/11/1991          25 Roma                                    
+     160252        1911           9 Graziano Pelle                           FD           07/15/1985          30 Southampton                             
+     160245        1911          10 Thiago Motta                             MF           08/28/1982          33 Paris                                   
+     160250        1911          11 Ciro Immobile                            FD           02/20/1990          26 Torino                                  
+     160233        1911          12 Salvatore Sirigu                         GK           01/12/1987          29 Paris                                   
+     160232        1911          13 Federico Marchetti                       GK           02/07/1983          33 Lazio                                   
+     160247        1911          14 Stefano Sturaro                          MF           03/09/1993          23 Juventus                                
+     160234        1911          15 Andrea Barzagli                          DF           05/08/1981          35 Juventus                                
+     160242        1911          16 Daniele De Rossi                         MF           07/24/1983          32 Roma                                    
+     160248        1911          17 Eder                                     FD           11/15/1986          29 Internazionale                          
+     160246        1911          18 Marco Parolo                             MF           01/25/1985          31 Lazio                                   
+     160235        1911          19 Leonardo Bonucci                         DF           05/01/1987          29 Juventus                                
+     160251        1911          20 Lorenzo Insigne                          FD           06/04/1991          25 Napoli                                  
+     160240        1911          21 Federico Bernardeschi                    MF           02/16/1994          22 Fiorentina                              
+     160249        1911          22 Stephan El Shaarawy                      FD           10/27/1992          23 Roma                                    
+     160244        1911          23 Emanuele Giaccherini                     MF           05/05/1985          31 Bologna                                 
+     160256        1912           1 Michael McGovern                         GK           07/12/1984          31 Hamilton                                
+     160264        1912           2 Conor McLaughlin                         DF           07/26/1991          24 Fleetwood                               
+     160269        1912           3 Shane Ferguson                           MF           07/12/1991          24 Millwall                                
+     160262        1912           4 Gareth McAuley                           DF           12/05/1979          36 West Brom                               
+     160259        1912           5 Jonny Evans                              DF           01/03/1988          28 West Brom                               
+     160257        1912           6 Chris Baird                              DF           02/25/1982          34 Fulham                                  
+     160275        1912           7 Niall McGinn                             FD           07/20/1987          28 Aberdeen                                
+     160267        1912           8 Steven Davis                             MF           01/01/1985          31 Southampton                             
+     160273        1912           9 Will Grigg                               FD           07/03/1991          24 Wigan                                   
+     160274        1912          10 Kyle Lafferty                            FD           09/16/1987          28 Birmingham                              
+     160276        1912          11 Conor Washington                         FD           05/18/1992          24 QPR                                     
+     160254        1912          12 Roy Carroll                              GK           09/30/1977          38 Notts County                            
+     160268        1912          13 Corry Evans                              MF           07/30/1990          25 Blackburn                               
+     160266        1912          14 Stuart Dallas                            MF           04/19/1991          25 Leeds                                   
+     160263        1912          15 Luke McCullough                          DF           02/15/1994          22 Doncaster                               
+     160271        1912          16 Oliver Norwood                           MF           04/12/1991          25 Reading                                 
+     160265        1912          17 Paddy McNair                             DF           04/27/1995          21 Man. United                             
+     160261        1912          18 Aaron Hughes                             DF           11/08/1979          36 Melbourne City                          
+     160272        1912          19 Jamie Ward                               MF           05/12/1986          30 Nottm Forest                            
+     160258        1912          20 Craig Cathcart                           DF           02/06/1989          27 Watford                                 
+     160270        1912          21 Josh Magennis                            MF           08/15/1990          25 Kilmarnock                              
+     160260        1912          22 Lee Hodson                               DF           10/02/1991          24 MK Dons                                 
+     160255        1912          23 Alan Mannus                              GK           05/19/1982          34 St Johnstone                            
+     160279        1913           1 Wojciech Szczesny                        GK           04/18/1990          26 Roma                                    
+     160283        1913           2 Michal Pazdan                            DF           09/21/1987          28 Legia                                   
+     160282        1913           3 Artur Jedrzejczyk                        DF           11/04/1987          28 Legia                                   
+     160280        1913           4 Thiago Cionek                            DF           04/21/1986          30 Palermo                                 
+     160293        1913           5 Krzysztof Maczynski                      MF           05/23/1987          29 Wisla                                   
+     160289        1913           6 Tomasz Jodlowiec                         MF           09/08/1985          30 Legia                                   
+     160298        1913           7 Arkadiusz Milik                          FD           02/28/1994          22 Ajax                                    
+     160292        1913           8 Karol Linetty                            MF           02/02/1995          21 Lech                                    
+     160297        1913           9 Robert Lewandowski                       FD           08/21/1988          27 Bayern                                  
+     160291        1913          10 Grzegorz Krychowiak                      MF           01/29/1990          26 Sevilla                                 
+     160288        1913          11 Kamil Grosicki                           MF           06/08/1988          28 Rennes                                  
+     160277        1913          12 Artur Boruc                              GK           02/20/1980          36 Bournemouth                             
+     160299        1913          13 Mariusz Stepinski                        FD           05/12/1995          21 Ruch                                    
+     160286        1913          14 Jakub Wawrzyniak                         DF           07/07/1983          32 Lechia                                  
+     160281        1913          15 Kamil Glik                               DF           02/03/1988          28 Torino                                  
+     160287        1913          16 Jakub Blaszczykowski                     MF           12/14/1985          30 Fiorentina                              
+     160294        1913          17 Slawomir Peszko                          MF           02/19/1985          31 Lechia                                  
+     160285        1913          18 Bartosz Salamon                          DF           05/01/1991          25 Cagliari                                
+     160296        1913          19 Piotr Zielinski                          MF           05/20/1994          22 Empoli                                  
+     160284        1913          20 Lukasz Piszczek                          DF           06/03/1985          31 Dortmund                                
+     160290        1913          21 Bartosz Kapustka                         MF           12/23/1996          19                                         
+     160278        1913          22 Lukasz Fabianski                         GK           04/18/1985          31 Swansea                                 
+     160295        1913          23 Filip Starzynski                         MF           05/27/1991          25 Zaglebie                                
+     160302        1914           1 Rui Patricio                             GK           02/15/1988          28 Sporting CP                             
+     160303        1914           2 Bruno Alves                              DF           11/27/1981          34 Fenerbahce                              
+     160307        1914           3 Pepe                                     DF           02/26/1983          33 Real Madrid                             
+     160306        1914           4 Jose Fonte                               DF           12/22/1983          32 Southampton                             
+     160308        1914           5 Raphael Guerreiro                        DF           12/22/1993          22 Lorient                                 
+     160309        1914           6 Ricardo Carvalho                         DF           05/18/1978          38 Monaco                                  
+     160322        1914           7 Cristiano Ronaldo                        FD           02/05/1985          31 Real Madrid                             
+     160314        1914           8 Joao Moutinho                            MF           09/08/1986          29 Monaco                                  
+     160319        1914           9 Eder                                     FD           12/22/1987          28 LOSC                                    
+     160313        1914          10 Joao Mario                               MF           01/19/1993          23 Sporting CP                             
+     160317        1914          11 Vieirinha                                MF           01/24/1986          30 Wolfsburg                               
+     160301        1914          12 Anthony Lopes                            GK           10/01/1990          25 Lyon                                    
+     160312        1914          13 Danilo                                   MF           09/09/1991          24 Porto                                   
+     160318        1914          14 William Carvalho                         MF           04/07/1992          24 Sporting CP                             
+     160311        1914          15 Andre Gomes                              MF           07/30/1993          22 Valencia                                
+     160316        1914          16 Renato Sanches                           MF           08/18/1997          18 Benfica                                 
+     160320        1914          17 Nani                                     FD           11/17/1986          29 Fenerbahce                              
+     160315        1914          18 Rafa Silva                               MF           05/17/1993          23 Braga                                   
+     160305        1914          19 Eliseu                                   DF           10/01/1983          32 Benfica                                 
+     160321        1914          20 Ricardo Quaresma                         FD           09/26/1983          32 Besiktas                                
+     160304        1914          21 Cedric                                   DF           08/31/1991          24 Southampton                             
+     160300        1914          22 Eduardo                                  GK           09/19/1982          33 Dinamo Zagreb                           
+     160310        1914          23 Adrien Silva                             MF           03/15/1989          27 Sporting CP                             
+     160325        1915           1 Keiren Westwood                          GK           10/23/1984          31 Sheff. Wednesday                        
+     160328        1915           2 Seamus Coleman                           DF           10/11/1988          27 Everton                                 
+     160327        1915           3 Ciaran Clark                             DF           09/26/1989          26 Aston Villa                             
+     160331        1915           4 John OShea                               DF           04/30/1981          35 Sunderland                              
+     160330        1915           5 Richard Keogh                            DF           08/11/1986          29 Derby                                   
+     160341        1915           6 Glenn Whelan                             MF           01/13/1984          32 Stoke                                   
+     160338        1915           7 Aiden McGeady                            MF           04/04/1986          30 Sheff. Wednesday                        
+     160336        1915           8 James McCarthy                           MF           11/12/1990          25 Everton                                 
+     160343        1915           9 Shane Long                               FD           01/22/1987          29 Southampton                             
+     160342        1915          10 Robbie Keane                             FD           07/08/1980          35 LA Galaxy                               
+     160337        1915          11 James McClean                            MF           04/22/1989          27 West Brom                               
+     160329        1915          12 Shane Duffy                              DF           01/01/1992          24 Blackburn                               
+     160334        1915          13 Jeff Hendrick                            MF           01/31/1992          24 Derby                                   
+     160345        1915          14 Jon Walters                              FD           09/20/1983          32 Stoke                                   
+     160326        1915          15 Cyrus Christie                           DF           09/30/1992          23 Derby                                   
+     160323        1915          16 Shay Given                               GK           04/20/1976          40 Stoke                                   
+     160332        1915          17 Stephen Ward                             DF           08/20/1985          30 Burnley                                 
+     160339        1915          18 David Meyler                             MF           05/29/1989          27 Hull                                    
+     160333        1915          19 Robbie Brady                             MF           01/14/1992          24 Norwich                                 
+     160335        1915          20 Wes Hoolahan                             MF           05/20/1982          34 Norwich                                 
+     160344        1915          21 Daryl Murphy                             FD           03/15/1983          33 Ipswich                                 
+     160340        1915          22 Stephen Quinn                            MF           04/01/1986          30 Reading                                 
+     160324        1915          23 Darren Randolph                          GK           05/12/1987          29 West Ham                                
+     160347        1916           1 Costel Pantilimon                        GK           02/01/1987          29 Watford                                 
+     160353        1916           2 Alexandru Matel                          DF           10/17/1989          26 Dinamo Zagreb                           
+     160355        1916           3 Razvan Rat                               DF           05/26/1981          35 Rayo Vallecano                          
+     160354        1916           4 Cosmin Moti                              DF           12/03/1984          31 Ludogorets                              
+     160358        1916           5 Ovidiu Hoban                             MF           12/27/1982          33 H. Beer-Sheva                           
+     160349        1916           6 Vlad Chiriches                           DF           11/14/1989          26 Napoli                                  
+     160357        1916           7 Alexandru Chipciu                        MF           05/18/1989          27 Steaua                                  
+     160359        1916           8 Mihai Pintilii                           MF           11/09/1984          31 Steaua                                  
+     160365        1916           9 Denis Alibec                             FD           01/05/1991          25 Astra                                   
+     160363        1916          10 Nicolae Stanciu                          MF           05/07/1993          23 Steaua                                  
+     160364        1916          11 Gabriel Torje                            MF           11/22/1989          26 Osmanlispor                             
+     160348        1916          12 Ciprian Tatarusanu                       GK           02/09/1986          30 Fiorentina                              
+     160367        1916          13 Claudiu Keeru                            FD           12/02/1986          29 Ludogorets                              
+     160366        1916          14 Florin Andone                            FD           04/11/1993          23 Cordoba                                 
+     160351        1916          15 Valerica Gaman                           DF           02/25/1989          27 Astra                                   
+     160350        1916          16 Steliano Filip                           DF           05/15/1994          22 Dinamo Bucuresti                        
+     160362        1916          17 Lucian Sanmartean                        MF           03/13/1980          36 Al-Ittihad                              
+     160361        1916          18 Andrei Prepelita                         MF           12/08/1985          30 Ludogorets                              
+     160368        1916          19 Bogdan Stancu                            FD           06/28/1987          28 Genclerbirligi                          
+     160360        1916          20 Adrian Popa                              MF           07/24/1988          27 Steaua                                  
+     160352        1916          21 Dragos Grigore                           DF           09/07/1986          29 Al-Sailiya                              
+     160356        1916          22 Cristian Sapunaru                        DF           04/05/1984          32 Pandurii                                
+     160346        1916          23 Silviu Lung                              GK           06/04/1989          27 Astra                                   
+     160369        1917           1 Igor Akinfeev                            GK           04/08/1986          30 CSKA Moskva                             
+     160378        1917           2 Roman Shishkin                           DF           01/27/1987          29 Lokomotiv Moskva                        
+     160379        1917           3 Igor Smolnikov                           DF           08/08/1988          27 Zenit                                   
+     160374        1917           4 Sergei Ignashevich                       DF           07/14/1979          36 CSKA Moskva                             
+     160376        1917           5 Roman Neustadter                         DF           02/18/1988          28 Schalke                                 
+     160372        1917           6 Aleksei Berezutski                       DF           06/20/1982          33 CSKA Moskva                             
+     160388        1917           7 Artur Yusupov                            MF           09/01/1989          26 Zenit                                   
+     160380        1917           8 Denis Glushakov                          MF           01/27/1987          29 Spartak Moskva                          
+     160390        1917           9 Aleksandr Kokorin                        FD           03/19/1991          25 Zenit                                   
+     160391        1917          10 Fedor Smolov                             FD           02/09/1990          26 Krasnodar                               
+     160383        1917          11 Pavel Mamaev                             MF           09/17/1988          27 Krasnodar                               
+     160371        1917          12 Yuri Lodygin                             GK           05/26/1990          26 Zenit                                   
+     160381        1917          13 Aleksandr Golovin                        MF           05/30/1996          20 CSKA Moskva                             
+     160373        1917          14 Vasili Berezutski                        DF           06/20/1982          33 CSKA Moskva                             
+     160386        1917          15 Roman Shirokov                           MF           07/06/1981          34 CSKA Moskva                             
+     160370        1917          16 Guilherme                                GK           12/12/1985          30 Lokomotiv Moskva                        
+     160385        1917          17 Oleg Shatov                              MF           07/29/1990          25 Zenit                                   
+     160382        1917          18 Oleg Ivanov                              MF           08/04/1986          29 Terek                                   
+     160384        1917          19 Aleksandr Samedov                        MF           07/19/1984          31 Lokomotiv Moskva                        
+     160387        1917          20 Dmitri Torbinski                         MF           04/28/1984          32 Krasnodar                               
+     160377        1917          21 Georgi Schennikov                        DF           04/27/1991          25 CSKA Moskva                             
+     160389        1917          22 Artem Dzyuba                             FD           08/22/1988          27 Zenit                                   
+     160375        1917          23 Dmitri Kombarov                          DF           01/22/1987          29 Spartak Moskva                          
+     160393        1918           1 Jan Mucha                                GK           12/05/1982          33 Slovan Bratislava                       
+     160398        1918           2 Peter Pekarik                            DF           10/30/1986          29 Hertha                                  
+     160401        1918           3 Martin Skrtel                            DF           12/15/1984          31 Liverpool                               
+     160395        1918           4 Jan Durica                               DF           12/10/1981          34 Lokomotiv Moskva                        
+     160396        1918           5 Norbert Gyomber                          DF           07/03/1992          23 Roma                                    
+     160404        1918           6 Jan Gregus                               MF           01/29/1991          25 Jablonec                                
+     160411        1918           7 Vladimir Weiss                           MF           11/30/1989          26 Al-Gharafa                              
+     160403        1918           8 Ondrej Duda                              MF           12/05/1994          21 Legia                                   
+     160414        1918           9 Stanislav Sestak                         FD           12/16/1982          33 Ferencvaros                             
+     160410        1918          10 Miroslav Stoch                           MF           10/19/1989          26 Bursaspor                               
+     160413        1918          11 Adam Nemec                               FD           09/02/1985          30 Willem II                               
+     160394        1918          12 Jan Novota                               GK           11/29/1983          32 Rapid Wien                              
+     160406        1918          13 Patrik HroSovsky                         MF           04/22/1992          24 Plzen                                   
+     160400        1918          14 Milan Skriniar                           DF           02/11/1995          21 Sampdoria                               
+     160397        1918          15 TomasHubocan                             DF           09/17/1985          30 Dinamo Moskva                           
+     160399        1918          16 Kornel Salata                            DF           01/24/1985          31 Slovan Bratislava                       
+     160405        1918          17 Marek Hamsik                             MF           07/27/1987          28 Napoli                                  
+     160402        1918          18 Dusan Svento                             DF           08/01/1985          30 Koln                                    
+     160407        1918          19 Juraj Kucka                              MF           02/26/1987          29 Milan                                   
+     160408        1918          20 Robert Mak                               MF           03/08/1991          25 PAOK                                    
+     160412        1918          21 Michal Duris                             FD           06/01/1988          28 Plzen                                   
+     160409        1918          22 Viktor Pecovsky                          MF           05/24/1983          33 zilina                                  
+     160392        1918          23 MatusKozacik                             GK           12/27/1983          32 Plzen                                   
+     160415        1919           1 Lker Casillas                            GK           05/20/1981          35 Porto                                   
+     160418        1919           2 Cesar Azpilicueta                        DF           08/28/1989          26 Chelsea                                 
+     160423        1919           3 Gerard Pique                             DF           02/02/1987          29 Barcelona                               
+     160419        1919           4 Marc Bartra                              DF           01/15/1991          25 Barcelona                               
+     160427        1919           5 Sergio Busquets                          MF           07/16/1988          27 Barcelona                               
+     160429        1919           6 Andres Iniesta                           MF           05/11/1984          32 Barcelona                               
+     160435        1919           7 Alvaro Morata                            FD           10/23/1992          23 Juventus                                
+     160430        1919           8 Koke                                     MF           01/08/1992          24 Atletico                                
+     160434        1919           9 Lucas Vazquez                            FD           07/01/1991          24 Real Madrid                             
+     160428        1919          10 Cesc Fabregas                            MF           05/04/1987          29 Chelsea                                 
+     160437        1919          11 Pedro Rodriguez                          FD           07/28/1987          28 Chelsea                                 
+     160420        1919          12 Hector Bellerin                          DF           03/19/1995          21 Arsenal                                 
+     160416        1919          13 David de Gea                             GK           11/07/1990          25 Man. United                             
+     160432        1919          14 Thiago Alcantara                         MF           04/11/1991          25 Bayern                                  
+     160424        1919          15 Sergio Ramos                             DF           03/30/1986          30 Real Madrid                             
+     160422        1919          16 Juanfran                                 DF           01/09/1985          31 Atletico                                
+     160425        1919          17 Mikel San Jose                           DF           05/30/1989          27 Athletic                                
+     160421        1919          18 Jordi Alba                               DF           03/21/1989          27 Barcelona                               
+     160426        1919          19 Bruno Soriano                            MF           06/12/1984          32 Villarreal                              
+     160433        1919          20 Aritz Aduriz                             FD           02/11/1981          35 Athletic                                
+     160431        1919          21 David Silva                              MF           01/08/1986          30 Man. City                               
+     160436        1919          22 Nolito                                   FD           10/15/1986          29 Celta                                   
+     160417        1919          23 Sergio Rico                              GK           09/01/1993          22 Sevilla                                 
+     160439        1920           1 Andreas Isaksson                         GK           10/03/1981          34 Kasimpasa                               
+     160446        1920           2 Mikael Lustig                            DF           12/13/1986          29 Celtic                                  
+     160444        1920           3 Erik Johansson                           DF           12/30/1988          27 Kobenhavn                               
+     160442        1920           4 Andreas Granqvist                        DF           04/16/1985          31 Krasnodar                               
+     160447        1920           5 Martin Olsson                            DF           05/17/1988          28 Norwich                                 
+     160451        1920           6 Emil Forsberg                            MF           10/23/1991          24 Leipzig                                 
+     160454        1920           7 Sebastian Larsson                        MF           06/06/1985          31 Sunderland                              
+     160449        1920           8 Albin Ekdal                              MF           07/28/1989          26 Hamburg                                 
+     160453        1920           9 Kim Kallstrom                            MF           08/24/1982          33 Grasshoppers                            
+     160459        1920          10 Zlatan Ibrahimovic                       FD           10/03/1981          34 Paris                                   
+     160457        1920          11 Marcus Berg                              FD           08/17/1986          29 Panathinaikos                           
+     160440        1920          12 Robin Olsen                              GK           01/08/1990          26 Kobenhavn                               
+     160443        1920          13 Pontus Jansson                           DF           02/13/1991          25 Torino                                  
+     160445        1920          14 Victor Lindelof                          DF           07/17/1994          21 Benfica                                 
+     160452        1920          15 Oscar Hiljemark                          MF           06/28/1992          23 Palermo                                 
+     160456        1920          16 Pontus Wernbloom                         MF           06/25/1986          29 CSKA Moskva                             
+     160441        1920          17 Ludwig Augustinsson                      DF           04/21/1994          22 Kobenhavn                               
+     160455        1920          18 Oscar Lewicki                            MF           07/14/1992          23 Malmo                                   
+     160460        1920          19 Emir Kujovic                             FD           06/22/1988          27 Norrkoping                              
+     160458        1920          20 John Guidetti                            FD           04/15/1992          24 Celta                                   
+     160448        1920          21 Jimmy Durmaz                             MF           03/22/1989          27 Olympiacos                              
+     160450        1920          22 Erkan Zengin                             MF           08/05/1985          30 Trabzonspor                             
+     160438        1920          23 Patrik Carlgren                          GK           01/08/1992          24 AIK                                     
+     160463        1921           1 Yann Sommer                              GK           12/17/1988          27 Monchengladbach                         
+     160467        1921           2 Stephan Lichtsteiner                     DF           01/16/1984          32 Juventus                                
+     160468        1921           3 Francois Moubandje                       DF           06/21/1990          25 Toulouse                                
+     160465        1921           4 Nico Elvedi                              DF           09/30/1996          19 Monchengladbach                         
+     160471        1921           5 Steve von Bergen                         DF           06/10/1983          33 Young Boys                              
+     160466        1921           6 Michael Lang                             DF           02/08/1991          25 Basel                                   
+     160480        1921           7 Breel Embolo                             FD           02/14/1997          19 Basel                                   
+     160475        1921           8 Fabian Frei                              MF           01/08/1989          27 Mainz                                   
+     160482        1921           9 Haris Seferovic                          FD           02/22/1992          24 Frankfurt                               
+     160477        1921          10 Granit Xhaka                             MF           09/27/1992          23 Monchengladbach                         
+     160472        1921          11 Valon Behrami                            MF           04/19/1985          31 Watford                                 
+     160462        1921          12 Marwin Hitz                              GK           09/18/1987          28 Augsburg                                
+     160469        1921          13 Ricardo Rodriguez                        DF           08/25/1992          23 Wolfsburg                               
+     160478        1921          14 Denis Zakaria                            MF           11/20/1996          19 Young Boys                              
+     160473        1921          15 Blerim Dzemaili                          MF           04/12/1986          30 Genoa                                   
+     160474        1921          16 Gelson Fernandes                         MF           09/02/1986          29 Rennes                                  
+     160483        1921          17 Shani Tarashaj                           FD           02/07/1995          21 Grasshoppers                            
+     160481        1921          18 Admir Mehmedi                            FD           03/16/1991          25 Leverkusen                              
+     160479        1921          19 Eren Derdiyok                            FD           06/12/1988          28 Kasimpasa                               
+     160464        1921          20 Johan Djourou                            DF           01/18/1987          29 Hamburg                                 
+     160461        1921          21 Roman Burki                              GK           11/14/1990          25 Dortmund                                
+     160470        1921          22 Fabian Schar                             DF           12/20/1991          24 Hoffenheim                              
+     160476        1921          23 Xherdan Shaqiri                          MF           10/10/1991          24 Stoke                                   
+     160486        1922           1 Volkan Babacan                           GK           08/11/1988          27 Istanbul Basaksehir                     
+     160492        1922           2 Semih Kaya                               DF           02/24/1991          25 Galatasaray                             
+     160490        1922           3 Hakan Balta                              DF           03/23/1983          33 Galatasaray                             
+     160487        1922           4 Ahmet Calik                              DF           02/26/1994          22 Genclerbirligi                          
+     160497        1922           5 Nuri Sahin                               MF           09/05/1988          27 Dortmund                                
+     160495        1922           6 Hakan Calhanoglu                         MF           02/08/1994          22 Leverkusen                              
+     160489        1922           7 Gokhan Gonul                             DF           01/04/1985          31 Fenerbahce                              
+     160501        1922           8 Selcuk Inan                              MF           02/10/1985          31 Galatasaray                             
+     160505        1922           9 Cenk Tosun                               FD           06/07/1991          25 Besiktas                                
+     160494        1922          10 Arda Turan                               MF           01/30/1987          29 Barcelona                               
+     160499        1922          11 Olcay Sahan                              MF           05/26/1987          29 Besiktas                                
+     160485        1922          12 Onur Kivrak                              GK           01/01/1988          28 Trabzonspor                             
+     160491        1922          13 Ismail Koybasi                           DF           07/10/1989          26 Besiktas                                
+     160498        1922          14 Oguzhan Ozyakup                          MF           09/23/1992          23 Besiktas                                
+     160496        1922          15 Mehmet Topal                             MF           03/03/1986          30 Fenerbahce                              
+     160500        1922          16 Ozan Tufan                               MF           03/23/1995          21 Fenerbahce                              
+     160504        1922          17 Burak Yilmaz                             FD           07/15/1985          30 Beijing Guoan                           
+     160488        1922          18 Caner Erkin                              DF           10/04/1988          27 Fenerbahce                              
+     160503        1922          19 Yunus Malli                              MF           02/24/1992          24 Mainz                                   
+     160502        1922          20 Volkan Sen                               MF           07/07/1987          28 Fenerbahce                              
+     160506        1922          21 Emre Mor                                 FD           07/24/1997          18 Nordsjælland                             
+     160493        1922          22 Sener Ozbayrakli                         DF           01/23/1990          26 Fenerbahce                              
+     160484        1922          23 Harun Tekin                              GK           06/17/1989          27 Bursaspor                               
+     160507        1923           1 Denys Boyko                              GK           01/29/1988          28 Besiktas                                
+     160510        1923           2 Bohdan Butko                             DF           01/13/1991          25 Amkar                                   
+     160512        1923           3 Yevhen Khacheridi                        DF           07/28/1987          28 Dynamo Kyiv                             
+     160524        1923           4 Anatoliy Tymoshchuk                      MF           03/30/1979          37 Kairat                                  
+     160513        1923           5 Olexandr Kucher                          DF           10/22/1982          33 Shakhtar Donetsk                        
+     160522        1923           6 Taras Stepanenko                         MF           08/08/1989          26 Shakhtar Donetsk                        
+     160525        1923           7 Andriy Yarmolenko                        MF           10/23/1989          26 Dynamo Kyiv                             
+     160529        1923           8 Roman Zozulya                            FD           11/17/1989          26 Dnipro                                  
+     160519        1923           9 Viktor Kovalenko                         MF           02/14/1996          20 Shakhtar Donetsk                        
+     160518        1923          10 Yevhen Konoplyanka                       MF           09/29/1989          26 Sevilla                                 
+     160528        1923          11 Yevhen Seleznyov                         FD           07/20/1985          30 Shakhtar Donetsk                        
+     160508        1923          12 Andriy Pyatov                            GK           06/28/1984          31 Shakhtar Donetsk                        
+     160515        1923          13 Vyacheslav Shevchuk                      DF           05/13/1979          37 Shakhtar Donetsk                        
+     160520        1923          14 Ruslan Rotan                             MF           10/29/1981          34 Dnipro                                  
+     160527        1923          15 Pylyp Budkivskiy                         FD           03/10/1992          24 Zorya                                   
+     160523        1923          16 Serhiy Sydorchuk                         MF           05/02/1991          25 Dynamo Kyiv                             
+     160511        1923          17 Artem Fedetskiy                          DF           04/26/1985          31 Dnipro                                  
+     160521        1923          18 Serhiy Rybalka                           MF           04/01/1990          26 Dynamo Kyiv                             
+     160516        1923          19 Denys Garmash                            MF           04/19/1990          26 Dynamo Kyiv                             
+     160514        1923          20 Yaroslav Rakitskiy                       DF           08/03/1989          26 Shakhtar Donetsk                        
+     160526        1923          21 Olexandr Zinchenko                       MF           12/15/1996          19 Ufa                                     
+     160517        1923          22 Olexandr Karavaev                        MF           06/02/1992          24 Zorya                                   
+     160509        1923          23 Mykyta Shevchenko                        GK           01/26/1993          23 Zorya                                   
+     160531        1924           1 Wayne Hennessey                          GK           01/24/1987          29 Crystal Palace                          
+     160536        1924           2 Chris Gunter                             DF           07/21/1989          26 Reading                                 
+     160538        1924           3 Neil Taylor                              DF           02/07/1989          27 Swansea                                 
+     160535        1924           4 Ben Davies                               DF           04/24/1993          23 Tottenham                               
+     160533        1924           5 James Chester                            DF           01/23/1989          27 West Brom                               
+     160539        1924           6 Ashley Williams                          DF           08/23/1984          31 Swansea                                 
+     160540        1924           7 Joe Allen                                MF           03/14/1990          26 Liverpool                               
+     160542        1924           8 Andy King                                MF           10/29/1988          27 Leicester                               
+     160550        1924           9 Hal Robson-Kanu                          FD           05/21/1989          27 Reading                                 
+     160544        1924          10 Aaron Ramsey                             MF           12/26/1990          25 Arsenal                                 
+     160547        1924          11 Gareth Bale                              FD           07/16/1989          26 Real Madrid                             
+     160530        1924          12 Owain Fon Williams                       GK           03/17/1987          29 Inverness                               
+     160552        1924          13 George Williams                          FD           09/07/1995          20 Fulham                                  
+     160541        1924          14 David Edwards                            MF           02/03/1986          30 Wolves                                  
+     160537        1924          15 Jazz Richards                            DF           04/12/1991          25 Fulham                                  
+     160543        1924          16 Joe Ledley                               MF           01/23/1987          29 Crystal Palace                          
+     160549        1924          17 David Cotterill                          FD           12/04/1987          28 Birmingham                              
+     160551        1924          18 Sam Vokes                                FD           10/21/1989          26 Burnley                                 
+     160534        1924          19 James Collins                            DF           08/23/1983          32 West Ham                                
+     160546        1924          20 Jonathan Williams                        MF           10/09/1993          22 Crystal Palace                          
+     160532        1924          21 Danny Ward                               GK           06/22/1993          22 Liverpool                               
+     160545        1924          22 David Vaughan                            MF           02/18/1983          33 Nottm Forest                            
+     160548        1924          23 Simon Church                             FD           12/10/1988          27 MK Dons                                 
+
+  552 record(s) selected.
+
+---q3--i
+select count(distinct c.country_id) from soccer_country c, (select distinct country_id from soccer_team t, player_mast player where t.team_id = player.team_id ) p where c.country_id = p.country_id
+
+1          
+-----------
+         24
+
+  1 record(s) selected.
+
+---q3--ii
+select count(*) from goal_details g where g.goal_schedule = 'ET'
+
+1          
+-----------
+          2
+
+  1 record(s) selected.
+
+---q3--iii
+select count(*) from goal_details g where g.goal_schedule = 'ST'
+
+1          
+-----------
+          9
+
+  1 record(s) selected.
+
+---q3--iv
+select count(*) from goal_details g where g.goal_schedule = 'NT'
+
+1          
+-----------
+         97
+
+  1 record(s) selected.
+
+---q3--v
+select count(*) from player_booked b where b.play_schedule = 'ST'
+
+1          
+-----------
+         10
+
+  1 record(s) selected.
+
+---q3--vi
+select count(*) from player_booked b where b.play_schedule = 'ET'
+
+1          
+-----------
+          7
+
+  1 record(s) selected.
+
+---q4-i
+select min(m. play_date) from match_mast m
+
+1         
+----------
+06/11/2016
+
+  1 record(s) selected.
+
+---q4-ii
+select max(m. play_date) from match_mast m
+
+1         
+----------
+07/11/2016
+
+  1 record(s) selected.
+
+---q5--i
+select distinct c.country_name from soccer_team t, soccer_country c, match_details d where t.country_id = c.country_id and t.team_id = d.team_id and d.match_no = 1
+
+COUNTRY_NAME                            
+----------------------------------------
+France                                  
+Romania                                 
+
+  2 record(s) selected.
+
+---q5--ii
+select distinct c.country_name from soccer_team t, soccer_country c, match_mast m, match_details d where t.country_id = c.country_id and t.team_id = d.team_id and m.match_no = d.match_no and d.win_lose = 'W' and m.play_date = ( select max(m. play_date) from match_mast m )
+
+COUNTRY_NAME                            
+----------------------------------------
+Portugal                                
+
+  1 record(s) selected.
+
+---q6--1
+select c.country_name, r.cou2 counts from soccer_country c, (select t.country_id, new.cou1 cou2 from soccer_team t, (select team_id, count(*) cou1 from penalty_shootout group by team_id) new where t.team_id = new.team_id) r where c.country_id = r.country_id
+
+COUNTRY_NAME                             COUNTS     
+---------------------------------------- -----------
+Germany                                            9
+Italy                                              9
+Poland                                             9
+Portugal                                           5
+Switzerland                                        5
+
+  5 record(s) selected.
+
+---q6--2
+select c.country_name from soccer_country c, (select t.country_id from soccer_team t, (select d.team_id from match_details d, (select m.match_no from match_mast m where m.play_date =  (select max(m. play_date) from match_mast m)) m where d.match_no = m.match_no) team where t.team_id = team.team_id) country where c.country_id = country.country_id
+
+COUNTRY_NAME                            
+----------------------------------------
+France                                  
+Portugal                                
+
+  2 record(s) selected.
+
+---q6--3
+select m.play_date from match_mast m where m.match_no in (select distinct match_no from penalty_shootout)
+
+PLAY_DATE 
+----------
+06/25/2016
+07/01/2016
+07/03/2016
+
+  3 record(s) selected.
+
+---q6--4
+select v.venue_name from soccer_venue v, (select m.venue_id from match_mast m where m.match_no in (select distinct match_no from penalty_shootout)) venue where v.venue_id = venue.venue_id
+
+VENUE_NAME                    
+------------------------------
+Stade Geoffroy Guichard       
+Stade VElodrome               
+Stade de Bordeaux             
+
+  3 record(s) selected.
+
+---q6--5
+select count(*) + 11 from soccer_team t, player_in_out p where p.match_no = (select max(match_no) from match_mast) and p.team_id = t.team_id and p.in_out = 'I' and t.country_id = (select c.country_id from soccer_country c where c.country_name = 'France')
+
+1          
+-----------
+         14
+
+  1 record(s) selected.
+
+
+terminate
+DB20000I  The TERMINATE command completed successfully.
+
