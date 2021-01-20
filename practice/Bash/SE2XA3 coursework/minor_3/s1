@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ $# -ne 3 ]
+then
+  echo "Wrong command line arguments"
+  echo "Usage: `basename $0` \$1\$2\$3"
+  exit
+fi
+
+>$1
+
+for ((i=1;i<=$3;i++))
+do
+  echo "$i,$2">>$1
+done

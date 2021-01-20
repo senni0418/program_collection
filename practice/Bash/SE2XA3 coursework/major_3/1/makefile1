@@ -1,0 +1,61 @@
+all: q1 q2 q3 ex1 ex2 ex3
+script1: script0
+	sed 's/prog/code/g' script0 > script1
+	chmod u+x script1
+
+script2: script1
+	tr "1" "2" < script1 > tmp1
+	sed 's/AB/BC/g' tmp1 > script2
+	rm tmp1
+	chmod u+x script2
+
+script3: script1
+	tr "1" "3" < script1 > tmp2
+	sed 's/AB/CD/g' tmp2 > script3
+	rm tmp2
+	chmod u+x script3
+
+code.cpp: code1.cpp
+	cat partA partB > code.cpp
+
+code2.cpp: code1.cpp
+	tr "1" "2" < code1.cpp > tmp3
+	sed 's/ALPHA/BETA/g' tmp3 > code2.cpp
+	rm tmp3
+
+code3.cpp: code1.cpp
+	tr "1" "3" < code1.cpp > tmp4
+	sed 's/ALPHA/GAMMA/g' tmp4 > code3.cpp
+	rm tmp4
+
+code1.o: code1.cpp
+	g++ -c code1.cpp
+code2.o: code2.cpp
+	g++ -c code2.cpp
+code3.o: code3.cpp
+	g++ -c code3.cpp
+
+q1: code.cpp code1.o script1
+	script1
+q2: code.cpp code2.o script2
+	script2
+q3: code.cpp code3.o script3
+	script3
+
+ex1: code.cpp 
+	g++ -o ex1 code.cpp -D_W1
+ex2: code.cpp
+	g++ -o ex2 code.cpp -D_W2
+ex3: code.cpp
+	g++ -o ex3 code.cpp
+	mv code1.cpp tmp
+	rm code*.cpp 
+	rm code*.o
+	mv tmp code1.cpp
+	mv script0 tmp
+	rm script* 
+	mv tmp script0
+
+clean:
+	rm q* ex*
+

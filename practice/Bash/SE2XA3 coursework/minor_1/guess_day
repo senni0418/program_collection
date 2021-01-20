@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo "guess for how long this computer had been up yesterday."
+read num
+n=$(($num+1))
+time=`uptime`
+up="${time:13:3}"
+echo "today this computer has been up for $time days"
+echo "you guessed $n days"
+if [ "$n" == "$up" ]
+then
+  echo "good guess"
+else
+  echo "bad guess"
+fi
