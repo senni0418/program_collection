@@ -1,0 +1,156 @@
+\documentclass{article}
+
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{float}
+\restylefloat{table}
+\title{SE 3XA3: Development Plan\\BigTwo}
+
+\author{Team 06, Team Name: Aplus^3
+		\\ Senni Tan, tans28
+		\\ Manyi Cheng, chengm33
+		\\ Jiaxin Tang, tangj63
+}
+\date{}
+\begin{document}
+\maketitle
+
+\newpage
+
+\begin{table}[hp]
+\caption{Revision History} \label{TblRevisionHistory}
+\begin{tabularx}{\textwidth}{llX}
+\toprule
+\textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
+\midrule
+Feb 3 & Team 06 & Initial Draft\\
+Feb 4 & Team 06 & Final revision\\
+Apr 4 & Manyi Cheng & \textcolor{red}{Revision 1.0 updated}\\
+Apr 5 & Jiaxin Tang & \textcolor{red}{Revision 1.0 updated}\\
+Apr 11 & Senni Tan & \textcolor{red}{Revision 1.0 updated}\\
+
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Team meeting plan}
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{|X|X|X|X|X|}
+        \hline
+         Meeting & Time & Location & Topic & Decision\\
+        \hline
+        1 & Jan 27th 2:00pm & Virtual \textcolor{red}{(By voice call via WeChat)} & Problem Statement& Discussed what project would be designed and assigned work for each team member\\
+        \hline
+        2 & Feb 3 10:00pm & Virtual \textcolor{red}{(By voice call via WeChat)} & Development Plan & Work assigned for each team member\\ 
+        \hline
+        3 & Feb 10 11:00am & Virtual \textcolor{red}{(By voice call via WeChat)}& Requirements Document Revision 0 & \textcolor{red}{Decided the functional and non-functional requirements the project should meet}\\
+        \hline
+        4 & Feb 17 2:00pm & Virtual \textcolor{red}{(By voice call via WeChat)}& Proof of Concept Demonstration & \textcolor{red}{Discussed what to do next step and made a PPT for demonstration}\\
+        \hline
+        5 & Feb 24 3:00pm & Virtual \textcolor{red}{(By voice call via WeChat)}& Test Plan Revision 0 & \textcolor{red}{Developed a test plan together}\\
+        \hline
+        6 & Mar 3 8:00pm & Virtual \textcolor{red}{(By voice call via WeChat)}& Design and Document Revision 0 & \textcolor{red}{Decided to use JavaScript instead of Python to develop the project, and assigned tasks to each member to start coding}\\
+        \hline
+        7 & Mar 10 10:00pm & Virtual \textcolor{red}{(By voice call via WeChat)}& Revision 0 Demonstration & \textcolor{red}{Reviewed the prototype of project together, discussed a future plan, and made a PPT for demonstration}\\
+        \hline
+   \end{tabularx}
+\end{table}
+\begin{table}[H]
+    \begin{center}
+    \begin{tabularx}{\textwidth}{|X|X|X|X|X|}
+        \hline
+        8 & Mar 17 7:00pm & Virtual \textcolor{red}{(By voice call via WeChat)}& Final Demonstration(Revision 1) & \textcolor{red}{Finished the project code}\\
+        \hline
+        9 & Mar 24 7:00pm & Virtual \textcolor{red}{(By voice call via WeChat)}& Final Demonstration(Revision 1) & \textcolor{red}{Developed a detailed plan for final demonstration, and assigned work to each member evenly}\\
+        \hline
+        10 & Apr 5 5:00pm & Virtual \textcolor{red}{(By voice call via WeChat)}& Final Documentation(Revision 1) & \textcolor{red}{Reviewed all the documents}\\
+        \hline
+        
+    \end{tabularx}
+    \caption{Team meeting plan}
+    \label{tab:meeting plan}
+    \end{center}
+\end{table}
+\FloatBarrier
+Frequency: A meeting would be held every Tuesday.
+
+Roles: Manyi Cheng would be the leader of the team and hold each meeting.
+
+Rules for agenda:
+\begin{itemize}
+    \item Meeting duration is about 2 hours.
+    \item Every team member must attend each meeting on time.
+    \item Work should be assigned to each team member properly.
+\end{itemize}
+\section{Team communication plan}
+Combination of Gitlab, Wechat, email, Google doc, and Overleaf will be used for the purpose of team communication and version control .
+\begin{itemize}
+    \item Gitlab: Gitlab would be used to keep updating the latest version of our projects. Every deliverable would be updated before the deadline for TAs to check.
+    \item Wechat: We would use Wechat to keep daily communication among team members. Virtual meeting would be held via Wechat. Team members would be able to share ideas and discuss about the project at any time using Wechat.
+    \item Email: Email would be used to share files and invitation links among team members.
+    \item Google doc: Google doc would be used to share files among team members and keep track of notes during each meeting.
+    \item Overleaf: Overleaf would be used for documentation.
+\end{itemize}
+
+\section{Team member roles}
+\begin{table}[H]
+    \begin{center}
+    \begin{tabularx}{\textwidth}{|X|X|X|}
+        \hline
+         Name & Role & Expertise\\
+        \hline
+        Manyi Cheng & Leader and developer & Expert on Latex, \textcolor{red}{JavaScript and React}\\
+        \hline
+        Jiaxin Tang & Developer & Expert on Latex and \textcolor{red}{JavaScript}\\
+        \hline
+        Senni Tan & Developer & Expert on Latex and \textcolor{red}{JavaScript}\\
+        \hline
+    \end{tabularx}
+    \caption{Team member roles}
+    \label{tab:roles}
+    \end{center}
+\end{table}
+\FloatBarrier
+Manyi Cheng would be the leader of the team and chair the meetings throughout the term. Every team member has the role of a developer to create the project together. Every decision would be made together as a team.
+
+\section{Git workflow plan}
+The Git Workflow Plan that we will implement in this project will be centralized and consists of a master and development branch, as well as feature branches.
+The master branch will only be used for production-ready code and the development branch is where all the development will take place. Feature branches will be created as necessary from the development branch and merged back development branch when complete and tested. When a certain functionality is tested and fully ready for release, it will be merged to the master branch from the development branch. Labels/Tags will be used to mark important merges/commits such as version numbering for new releases/updates. Milestones will be used as commit messages for tags throughout the course of this project.
+\section{Proof of concept demonstration plan}
+\subsection{Most Significant Risk}
+The most significant risk of our game, BigTwo, will be having the game crash on the user's PC, for example, HTTP errors due to invalid requests. Another major concern is that old browsers may not support HTML5 and JavaScript ES6 standards, it is important to implement exception handling for such scenarios. Another risk is that our game could cause the users' browsers to stop responding, due to server errors. In order to overcome this risk, we have to make sure that the game is tested thoroughly and rigorously on multiple different operating systems and browsers.
+
+\subsection{Will a part of the implementation be difficult?}
+\textcolor{red}{
+Breaking the game down into workable and sizable modules will be difficult since we are re-implementing the Java LAN party game into React.js. We might have difficulty optimizing the game response since JavaScript as an high-level, often just-in-time compiled language, and is known to be slower in performance than languages like C, C++.}
+\subsection{Will testing be difficult?}
+Unit testing the game will not be difficult because we will be using \textcolor{red}{Jest} as a testing framework. \textcolor{red}{Jest} is user friendly and has many tutorials online for beginners. However, testing the robustness of the game will be challenging for us as none of us have any prior experience with random testing.
+
+\subsection{Is a required library difficult to install?}
+No, the required library is not difficult to install. Our re-implementation will be in \textcolor{red}{JavaScript, and all libraries used will be listed in the dependencies. User can install required library easily using the Node Package Manager.}
+
+\subsection{Will portability be a concern?}
+Portability will not be a concern, since the game will be played using browsers. Furthermore, we will use HTML5 and JSES6 standards to ensure the game can be played via major browsers after 2015.
+
+
+\section{Technology}
+Programming Language: \textcolor{red}{JavaScript ECMAScript 2015} will be used for this project.\\
+\textcolor{red}{Javascript Framework: React.js 17.0.1 will be used to implement the game. Beware that it is required to have Node $\geq$ 10.16 and npm $\geq$ 5.6 due to restriction with the framework.}\\
+Build Tool: \textcolor{red}{NPM} - Standard tool used to handle all build, run, and test tasks for \textcolor{red}{React.js. NPM (Node Package Manager) to handle all dependencies.}\\
+IDE: VS Code and Geany will be used through this project. Build and execution will be done using the terminal.\\
+Testing Framework: \textcolor{red}{JEST} - A testing framework for \textcolor{red}{Javascript} managed by Facebook.\\
+Document Generation: Doxygen - Standard tool for generating documentation from annotated sources, supports many popular programming languages, including \textcolor{red}{JavaScript}.\\
+
+
+\section{Coding style}
+We will use \textbf{Google HTML/CSS Style} for our HTML and CSS code, \textbf{Google JavaScript Style} for our JavaScript code.
+
+\section{Project schedule}
+The Gantt chart and PDF files are available in the GanttProject folder. These files will be updated weekly.
+
+\section{Project review}
+\textcolor{red}{Throughout the duration of this course, we, group6, has re-implemented and improved upon an existing open source BigTwo game project. The project was successfully developed as a web development project using HTML, CSS and JavaScript with the tool React.js to implement the BigTwo game. Improvements such as the new features including Mario Themed appearance, timer and rules at start page have been added to the game to improve user experience. We used Jest to do unit testing for the functions in each module, and manual testing for the entire game system. We ensured our game had reached an excellent quality in terms of reliability, robustness, maintainability, and usability. As students and developers, we gained practical software project development experience in a group environment. Our group communicate well and work efficiently although at first we got stuck in choosing topics for this project. Overall, we finished the project well with documents to be further reference for stakeholders, developers and anyone who may be interested in this project. In the future, we will keep growing as a software developer and learn more about software development.}
+
+\end{document}
+

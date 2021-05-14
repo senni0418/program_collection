@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: PlayerBot.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: PlayerBot.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file PlayerBot.js
+ * @description This file contains functions for the PlayerBot to deal cards during the game
+ * @author Senni Tan
+ * @version Latest edition on April 10, 2021
+ */
+
+import * as Rules from './Rules.js'
+
+/**
+ * @function BotPlayCards
+ * @description A function that takes the input of all cards that the playerBot has and 
+ * an input of the cards last dealed by last player, and returns the selected cards for playerBot
+ * @param {card[]} cards 
+ * @param {card[]} last 
+ * @returns {card[]} selectedCards
+ */
+export function BotPlayCards(cards, last) {
+    Rules.sortCardsValue(cards)
+    Rules.sortCardsValue(last)
+    var selectedCards
+
+    if (last.length === 1){
+        selectedCards = BotSelectSingle(cards, last)
+    } else if (last.length === 2){
+        selectedCards = BotSelectPair(cards, last)
+    } else if (last.length === 5){
+        selectedCards = BotSelectFive(cards, last)
+    } else {
+        
+    }
+
+    return selectedCards
+}
+
+/**
+ * @function BotStartingTurn
+ * @description If the playerBot has a dimond 3, he will first deal out the dimond 3 in a round of game
+ * @param {card[]} cards 
+ * @returns {card[]} [The dimond 3 card]
+ */
+export function BotStartingTurn(cards) {
+    var i = 0
+    while (i &lt; cards.length) {
+        if (cards[i].value === 3 &amp;&amp; cards[i].suit === "D"){
+            return [cards[i]]
+        } 
+        i++
+    }
+}
+
+/**
+ * @function BotFreeTurn
+ * @description When all other players pass, and this playerBot will deal out the smallest cards combo in the privilage of
+ * five cards -> pairs -> single card
+ * @param {card[]} cards 
+ * @returns {card[]} a list of smallest cards combo it can deal out in the privilage of five -> pair -> single
+ */
+export function BotFreeTurn(cards) {
+    Rules.sortCardsValue(cards)
+
+    var selectedCards = getAllFiveCards(cards)
+
+    if (selectedCards !== null &amp;&amp; selectedCards.length !== 0){
+        return selectedCards[0]
+    }
+
+    selectedCards = getAllPairs(cards)
+    if (selectedCards !== null &amp;&amp; selectedCards.length !== 0){
+        return selectedCards[0]
+    } 
+
+    return [cards[0]]
+}
+
+/**
+ * @function BotSelectSingle
+ * @description A function that deals the smallest single card that is valid and stronger than the card that the last player dealed
+ * @param {card[]} cards - the cards that the playerBot has
+ * @param {card[]} last - the card(s) that the last player dealed
+ * @returns {card[]} the smallest card(s) that is valid and stronger than the card that the last player dealed
+ */
+export function BotSelectSingle(cards, last) {
+
+    var i = 0
+    while (i &lt; cards.length){
+        if (Rules.isStrongerSingle(last[0], cards[i])){
+            return [cards[i]]
+        }
+        i++
+    }
+
+    return null
+}
+
+/**
+ * @function BotSelectPair
+ * @description A function that deals the smallest pair that is valid and stronger than the cards that the last player dealed
+ * @param {card[]} cards - the cards that the playerBot has
+ * @param {card[]} last - the cards that the last player dealed
+ * @returns {card[]} the smallest pair that is valid and stronger than the pair that the last player dealed
+ */
+export function BotSelectPair(cards, last) {
+    var pairs = getAllPairs(cards)
+
+    if (pairs){
+        let i = 0
+        while (i &lt; pairs.length){
+            if (Rules.isStrongerPair(last, pairs[i])){
+                return pairs[i]
+            }
+            i++
+        }
+    }
+
+    return null
+}
+
+/**
+ * @function BotSelectFive
+ * @description A function that deals the smallest five-card combo that is valid and stronger than the cards that the last player dealed
+ * @param {card[]} cards - the cards that the playerBot has
+ * @param {card[]} last - the cards that the last player dealed
+ * @returns {card[]} the smallest five-card combo that is valid and stronger than the card that the last player dealed
+ */
+export function BotSelectFive(cards, last) {
+    var combos = getAllFiveCards(cards)
+
+    if (combos){
+        let i = 0
+        while (i &lt; combos.length){
+            if (Rules.isStrongerPlay(last, combos[i])){
+                return combos[i]
+            }
+            i++
+        }
+    }
+
+    return null
+}
+
+/**
+ * @function getAllFiveCards
+ * @description A function that returns all possible valid five-card combinations
+ * @param {card[]} cards - the cards that the playerBot has
+ * @returns {card[]} a list of all possible valid five-card combinations that the player bot has
+ */
+function getAllFiveCards(cards) {
+    if (cards.length &lt; 5) return null
+
+    var validCombos = []
+
+    function searchFiveCards(cards, subset, i) {
+        if (i === cards.length) {
+            subset = subset.filter(card => card !== null)
+            subset = subset.slice(0, 5)
+            if (Rules.isValidFiveCardPlay(subset)) {
+                validCombos.push(subset)
+            }
+            return
+        }
+
+        subset[i] = cards[i]
+        searchFiveCards(cards, subset, i + 1)
+        subset[i] = null
+        searchFiveCards(cards, subset, i + 1)
+    }
+    searchFiveCards(cards, [], 0)
+
+    return validCombos
+
+}
+
+/**
+ * @function getAllPairs
+ * @description A function that returns all possible valid pairs
+ * @param {card[]} cards - the cards that the playerBot has
+ * @returns {card[]} a list of all possible valid pairs that the playerBot has
+ */
+function getAllPairs(cards) {
+    var seenCards = new Map()
+    var pairs = []
+
+    var i = 0
+    while (i &lt; cards.length){
+        if (seenCards.has(cards[i].type)) {
+            var lastSeenCard = seenCards.get(cards[i].type)
+            pairs.push([lastSeenCard, cards[i]])
+        } else {
+            seenCards.set(cards[i].type, cards[i])
+        }
+        i++
+    }
+
+    return pairs
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-Deck.html">Deck</a></li><li><a href="module-GameplayField.html">GameplayField</a></li><li><a href="module-Timer.html">Timer</a></li></ul><h3>Classes</h3><ul><li><a href="App.html">App</a></li><li><a href="Game.html">Game</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BotFreeTurn">BotFreeTurn</a></li><li><a href="global.html#BotPlayCards">BotPlayCards</a></li><li><a href="global.html#BotSelectFive">BotSelectFive</a></li><li><a href="global.html#BotSelectPair">BotSelectPair</a></li><li><a href="global.html#BotSelectSingle">BotSelectSingle</a></li><li><a href="global.html#BotStartingTurn">BotStartingTurn</a></li><li><a href="global.html#Card">Card</a></li><li><a href="global.html#Deck">Deck</a></li><li><a href="global.html#GameplayField">GameplayField</a></li><li><a href="global.html#getAllFiveCards">getAllFiveCards</a></li><li><a href="global.html#getAllPairs">getAllPairs</a></li><li><a href="global.html#getSuitValue">getSuitValue</a></li><li><a href="global.html#importAll">importAll</a></li><li><a href="global.html#isStrongerFive">isStrongerFive</a></li><li><a href="global.html#isStrongerPair">isStrongerPair</a></li><li><a href="global.html#isStrongerPlay">isStrongerPlay</a></li><li><a href="global.html#isStrongerSingle">isStrongerSingle</a></li><li><a href="global.html#isValidFiveCardPlay">isValidFiveCardPlay</a></li><li><a href="global.html#isValidFlush">isValidFlush</a></li><li><a href="global.html#isValidFourOfaKind">isValidFourOfaKind</a></li><li><a href="global.html#isValidFullHouse">isValidFullHouse</a></li><li><a href="global.html#isValidPair">isValidPair</a></li><li><a href="global.html#isValidSingle">isValidSingle</a></li><li><a href="global.html#isValidSPlay">isValidSPlay</a></li><li><a href="global.html#isValidStartingPlay">isValidStartingPlay</a></li><li><a href="global.html#isValidStraight">isValidStraight</a></li><li><a href="global.html#newDeck">newDeck</a></li><li><a href="global.html#Player">Player</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#setFirstTurn">setFirstTurn</a></li><li><a href="global.html#setUserCards">setUserCards</a></li><li><a href="global.html#shuffle">shuffle</a></li><li><a href="global.html#sortCardsSuit">sortCardsSuit</a></li><li><a href="global.html#sortCardsValue">sortCardsValue</a></li><li><a href="global.html#Timer">Timer</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Sun Apr 11 2021 23:29:26 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

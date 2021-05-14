@@ -1,0 +1,146 @@
+\documentclass{article}
+
+\usepackage{tabularx}
+\usepackage{booktabs}
+
+\title{SE 3XA3: Development Plan\\BigTwo}
+
+\author{Team 06, Team Name: Aplus^3
+		\\ Senni Tan, tans28
+		\\ Manyi Cheng, chengm33
+		\\ Jiaxin Tang, tangj63
+}
+\date{}
+\newpage
+\begin{document}
+\maketitle
+\begin{table}[hp]
+\caption{Revision History} \label{TblRevisionHistory}
+\begin{tabularx}{\textwidth}{llX}
+\toprule
+\textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
+\midrule
+Feb 3 & Team 06 & Initial Draft\\
+Feb 4 & Team 06 & Final revision\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\newpage
+
+
+\section{Team meeting plan}
+
+\begin{table}[h!]
+    \begin{center}
+    \begin{tabularx}{\textwidth}{|X|X|X|X|X|}
+        \hline
+         Meeting & Time & Location & Topic & Decision\\
+        \hline
+        1 & Jan 27th 2:00pm & Virtual & Problem Statement& Discussed what project would be designed and assigned work for each team member\\
+        \hline
+        2 & Feb 3 10:00pm & Virtual & Development Plan & Work assigned for each team member\\ 
+        \hline
+        3 & Feb 10 11:00am & Virtual & Requirements Document Revision 0 & TBD\\
+        \hline
+        4 & Feb 17 2:00pm & Virtual & Proof of Concept Demonstration & TBD\\
+        \hline
+        5 & Feb 24 3:00pm & Virtual & Test Plan Revision 0 & TBD\\
+        \hline
+        6 & Mar 3 8:00pm & Virtual & Design and Document Revision 0 & TBD\\
+        \hline
+        7 & Mar 10 10:00pm & Virtual & Revision 0 Demonstration & TBD\\
+        \hline
+        8 & Mar 17 7:00pm & Virtual & Final Demonstration(Revision 1) & TBD\\
+        \hline
+        9 & Mar 24 7:00pm & Virtual & Final Demonstration(Revision 1) & TBD\\
+        \hline
+        10 & Apr 5 5:00pm & Virtual & Final Documentation(Revision 1) & TBD\\
+        \hline
+        
+    \end{tabularx}
+    \caption{Team meeting plan}
+    \label{tab:meeting plan}
+    \end{center}
+\end{table}
+
+Frequency: A meeting would be held every Tuesday.
+
+Roles: Manyi Cheng would be the leader of the team and hold each meeting.
+
+Rules for agenda:
+\begin{itemize}
+    \item Meeting duration is about 2 hours.
+    \item Every team member must attend each meeting on time.
+    \item Work should be assigned to each team member properly.
+\end{itemize}
+
+\section{Team communication plan}
+Combination of Gitlab, Wechat, email, Google doc, and Overleaf will be used for the purpose of team communication and version control .
+\begin{itemize}
+    \item Gitlab: Gitlab would be used to keep updating the latest version of our projects. Every deliverable would be updated before the deadline for TAs to check.
+    \item Wechat: We would use Wechat to keep daily communication among team members. Virtual meeting would be held via Wechat. Team members would be able to share ideas and discuss about the project at any time using Wechat.
+    \item Email: Email would be used to share files and invitation links among team members.
+    \item Google doc: Google doc would be used to share files among team members and keep track of notes during each meeting.
+    \item Overleaf: Overleaf would be used for documentation.
+\end{itemize}
+
+\section{Team member roles}
+\begin{table}[h!]
+    \begin{center}
+    \begin{tabularx}{\textwidth}{|X|X|X|}
+        \hline
+         Name & Role & Expertise\\
+        \hline
+        Manyi Cheng & Leader and developer & Expert on Latex and Python\\
+        \hline
+        Jiaxin Tang & Developer & Expert on Latex and Python\\
+        \hline
+        Senni Tan & Developer & Expert on Latex and Python\\
+        \hline
+    \end{tabularx}
+    \caption{Team member roles}
+    \label{tab:roles}
+    \end{center}
+\end{table}
+Manyi Cheng would be the leader of the team and chair the meetings throughout the term. Every team member has the role of a developer to create the project together. Every decision would be made together as a team.
+
+\section{Git workflow plan}
+The Git Workflow Plan that we will implement in this project will be centralized and consists of a master and development branch, as well as feature branches.
+The master branch will only be used for production-ready code and the development branch is where all the development will take place. Feature branches will be created as necessary from the development branch and merged back development branch when complete and tested. When a certain functionality is tested and fully ready for release, it will be merged to the master branch from the development branch. Labels/Tags will be used to mark important merges/commits such as version numbering for new releases/updates. Milestones will be used as commit messages for tags throughout the course of this project.
+\section{Proof of concept demonstration plan}
+\subsection{Most Significant Risk}
+The most significant risk of our game, BigTwo, will be having the game crash on the user's PC, for example, HTTP errors due to invalid requests. Another major concern is that old browsers may not support HTML5 and JavaScript ES6 standards, it is important to implement exception handling for such scenarios. Another risk is that our game could cause the users' browsers to stop responding, due to server errors. In order to overcome this risk, we have to make sure that the game is tested thoroughly and rigorously on multiple different operating systems and browsers.
+
+\subsection{Will a part of the implementation be difficult?}
+Breaking the game down into workable and sizable modules will be difficult since we are re-implementing the Java LAN party game into Python. We might have difficulty optimizing the game response since Python as an interpreted language is known to be slower in performance than most compiled languages.
+\subsection{Will testing be difficult?}
+Unit testing the game will not be difficult because we will be using PyTest as a testing framework. PyTest is user friendly and has many tutorials online for beginners. However, testing the robustness of the game will be challenging for us as none of us have any prior experience with random testing.
+
+\subsection{Is a required library difficult to install?}
+No, the required library is not difficult to install. Our re-implementation will be in Python, and all libraries used will be implanted in our program.
+
+\subsection{Will portability be a concern?}
+Portability will not be a concern, since the game will be played using browsers. Furthermore, we will use HTML5 and JSES6 standards to ensure the game can be played via major browsers after 2015.
+
+
+\section{Technology}
+Programming Language: Python version 3.9.0 will be used for this project. Be aware that this project will not support Python with version 2.x.x due to restrictions with the game framework.
+Game Framework: Pygame version 2.0.0 will be used to implement the game.
+Build Tool: Makefile - Standard tool used to handle all build, run, and test tasks. The makefile will use pip (Python Package Manager) to handle all dependencies.
+IDE: VS Code and Geany will be used through this project. Build and execution will be done using the terminal.
+Testing Framework: PyTest - A testing framework for Python.
+Document Generation: Doxygen - Standard tool for generating documentation from annotated sources, supports many popular programming languages, including Python.
+
+
+\section{Coding style}
+We will use \textbf{PEP8} style for our Python code, \textbf{Google HTML/CSS Style} for our HTML and CSS code, \textbf{Google JavaScript Style} for our JavaScript code.
+
+\section{Project schedule}
+The Gantt chart and PDF files are available in the GanttProject folder. These files will be updated weekly.
+
+\section{Project review}
+
+
+\end{document}
+

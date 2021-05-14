@@ -1,0 +1,728 @@
+\documentclass[12pt, titlepage]{article}
+
+\usepackage{fullpage}
+\usepackage[round]{natbib}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=blue
+}
+\usepackage[utf8]{inputenc}
+
+
+\newcounter{mnum}
+\newcommand{\mthemnum}{M\themnum}
+\newcommand{\mref}[1]{M\ref{#1}}
+
+\title{SE 3XA3: Module Interface Specification (MIS)\\BigTwo}
+
+\author{Team 06, Team Name: Aplus^3
+		\\ Senni Tan, tans28
+		\\ Manyi Cheng, chengm33
+		\\ Jiaxin Tang, tangj63
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\pagenumbering{roman}
+\tableofcontents
+\listoftables
+
+
+
+\begin{table}[bp]
+\caption{\bf Revision History}
+\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+\midrule
+Mar 16, 2021 & 0.0 & Initial Draft \\
+\textcolor{red}{Apr 10, 2021} & \textcolor{red}{1.0} & \textcolor{red}{Revision 1.0}\\
+\bottomrule
+\end{tabularx}
+\end{table}
+\FloatBarrier
+
+\newpage
+\pagenumbering{arabic}
+
+\section{\textcolor{red}{Introduction}} \label{SecMH}
+\textcolor{red}{This document provides the overview and also the details of the module design. The code files that implement the modules in this document have been generated in doxygen files in the same folder.}
+
+\section{Module Hierarchy} \label{SecMH}
+
+This section provides an overview of the module design. Modules are summarized
+in a hierarchy decomposed by secrets in Table \ref{TblMH}. The modules listed
+below, which are leaves in the hierarchy tree, are the modules that will
+actually be implemented.
+
+\begin{description}
+\item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Hardware-Hiding Module: Hardware-Hiding Module
+\item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Behaviour-Hiding Module: \textcolor{red}{App Module}
+\item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Behaviour-Hiding Module:  Card Module
+\item [\refstepcounter{mnum} \mthemnum \label{mHH}:]
+Behaviour-Hiding Module:  Player Module
+\item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Behaviour-Hiding Module:  PlayerBot Module
+\item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Behaviour-Hiding Module:  Rules Module
+\item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Behaviour-Hiding Module: Game Module
+\item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Behaviour-Hiding Module:  GameplayField Module
+
+\end{description}
+
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
+\toprule
+\textbf{Level 1} & \textbf{Level 2}\\
+\midrule
+
+\multirow{1}{0.3\textwidth}{Hardware-Hiding Module} & Hardware-Hiding Module \\
+\midrule
+
+\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & \textcolor{red}{App Module}\\
+& Card Module\\
+& Player Module\\
+& PlayerBot Module\\
+& Game Module\\
+& GameplayField Module\\
+\midrule
+
+\multirow{1}{0.3\textwidth}{Software Decision Module} & Rules Module\\
+\bottomrule
+
+\end{tabular}
+\caption{Module Hierarchy}
+\label{TblMH}
+\end{table}
+
+\section{MIS of \textcolor{red}{App} Module}
+\subsection{Uses}
+Game
+\subsection{Interface Syntax}
+\subsubsection{Exported Types}
+\textcolor{red}{App} = ?
+\subsubsection{Exported Access Programs}
+\begin{tabular}[pos]{|c|c|c|c|}
+\hline
+%	\label
+\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+ \textcolor{red}{App} & Game  & \textcolor{red}{App}  &InvalidInput \\ 
+\hline
+ \textcolor{red}{render} & - & Screen & - \\
+ \hline
+\end{tabular}
+
+
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+$game$: Game
+
+\subsubsection{Environmental Variables}
+\textcolor{red}{Screen}
+\subsubsection{Assumptions}
+The constructor \textcolor{red}{App} is called for the object instance before any other access routine is called for that object. The constructor cannot be called on an existing object.
+
+\subsubsection{Access Program Semantics}
+\textcolor{red}{App}($game$):
+\begin{itemize}
+    \item transition: $game$ := $game$
+    \item output: $out$ := $self$
+    \item exception := $exc$ := ((typeof(game) $\neq$ Game) $\Rightarrow$ InvalidInput)
+\end{itemize}
+
+\textcolor{red}{render}():
+\begin{itemize}
+    \item output := output each component in the Game module with the expected image in the image folder to the screen.
+    \item exception := None
+\end{itemize}
+
+\section{MIS of Card Module}
+\subsection{Interface Syntax}
+\subsubsection{Exported Types}
+Card = ?
+\subsubsection{Constants}
+\textcolor{red}{type = ["", "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]}\\
+\textcolor{red}{suits = ["D", "C", "H", "S"]}\\
+\textcolor{red}{SuiteVal = [1, 2, 3, 4]}\\
+\textcolor{red}{suitsPath = ["Diamonds", "Clubs", "Hearts", "Spades"]}\\
+\textcolor{red}{valuesPath = ["", "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"]}
+
+\subsubsection{Exported Access Programs}
+\begin{tabular}[pos]{|c|c|c|c|}
+\hline
+%	\label
+\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+Card & \textcolor{red}{\mathbb{Z}, \mathbb{Z}} & Card  & InvalidInput $\lor$ FileNotFound \\ 
+ \hline
+image & - & Screen &- \\ 
+ \hline
+\end{tabular}
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+\textcolor{red}{type:String} \\
+\textcolor{red}{suit:String}\\
+\textcolor{red}{suitVal:int}\\
+\textcolor{red}{value:int}\\
+image:String \textcolor{blue}{A string contains the location of the image file for the card}\\
+
+\subsubsection{Environmental Variables}
+\textcolor{red}{Screen}
+\subsubsection{Assumptions}
+The constructor Card is called for each object instance before any other access routine is called for that object. The constructor cannot be called on an existing object.
+
+\subsubsection{Access Program Semantics}
+Card($\textcolor{red}{type\_num, suit\_num}$):
+\begin{itemize}
+    \item transition: $\textcolor{red}{type, suit, suitVal, value}, image$ :=\\ $\textcolor{red}{type[type\_num], suits[suit\_num], suitVal[suit\_num], }$\\
+    $\textcolor{red}{((type\_num == 1) \Rightarrow 14) | ((type\_num == 2) \Rightarrow 15) | type\_num),}$\\
+    $\textcolor{red}{"NAP-01\_"+ suitsPath[suit\_num] + "\_"+ valuesPath[type\_val] + ".png"}$
+    \item output: $out$ := $self$
+    \item exception := $exc$ := ((typeof(suite) $\neq$ SuiteT) $\lor$  (typeof(num) $\neq$ NumT) $lor$ (typeof(image) $\neq$ String) $\Rightarrow$ InvalidInput) $\land$ (can not find file at image location $\Rightarrow$ FileNotFound)
+\end{itemize}
+
+image()
+\begin{itemize}
+    \item output := $out$ := image
+    \item exception := None
+\end{itemize}
+
+\section{MIS of Player Module}
+\subsection{Uses}
+\textcolor{red}{Card}
+\subsection{Interface Syntax}
+\subsubsection{Exported Types}
+None
+\subsubsection{Exported Access Programs}
+{\begin{tabular}[pos]{|c|c|c|c|}
+\hline
+%	\label
+\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+Player & \textcolor{red}{seq of Card} & Player & \textcolor{red}{-}\\ 
+\hline
+selectCard & \textcolor{red}{Card} &- &- \\ 
+\hline
+\textcolor{red}{handlePlayClick} & mouse click on screen & - & InvalidCombination \\ 
+\hline
+\textcolor{red}{handlePassTurnClick} & mouse click on screen & - & - \\ 
+\hline
+\textcolor{red}{handleTypeSort} & - & - &- \\ 
+\hline
+\textcolor{red}{handleTypeSort} & - & - & - \\ 
+\hline
+\end{tabular}
+}
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+\textcolor{red}{prop: seq of Card} \textcolor{blue}{the cards that the player has}\\
+selectedCards: seq of Card
+
+\subsubsection{Environmental Variables}
+\textcolor{red}{Mouse, Screen}
+
+\subsubsection{Assumptions}
+The constructor Player is called for the object instance before any other access routine is called for that object. The constructor cannot be called on an existing object.
+\subsubsection{Access Program Semantics}
+Player($\textcolor{red}{props}$):
+\begin{itemize}
+    \item transition: $\textcolor{red}{props}, selectedCards$ := $\textcolor{red}{props}, []$
+    \item output: $out$ := $self$
+\end{itemize}
+
+selectCard(\textcolor{red}{e}):
+\begin{itemize}
+    \item transition: $selectedCards$ := the card(s) that is(are) clicked on the screen
+    \item exception: None
+\end{itemize}
+
+\textcolor{red}{handlePlayClick(e)}:
+\begin{itemize}
+    \item transition: \textcolor{red}{remove the card(s) selected by mouse clicking from the selectedCards and props, and deal out the selected cards on screen}
+    \item exception: $exc$ := \textcolor{red}{if the selecetd cards are not valid} $\Rightarrow$ InvalidCombination
+\end{itemize}
+
+\textcolor{red}{handlePassTurnClick(e)}:
+\begin{itemize}
+    \item transition: pass the turn for the player in the game
+    \item exception: None
+\end{itemize}
+
+\textcolor{red}{handleTypeSort()}:
+\begin{itemize}
+    \item transition: sort $\textcolor{red}{props}$ in the number type value order, from smallest to largest.
+    \item exception: None
+\end{itemize}
+
+\textcolor{red}{handleSuitSort()}:
+\begin{itemize}
+    \item transition: sort $\textcolor{red}{props}$ in the Suite value order, from smallest to largest.
+    \item exception: None
+\end{itemize}
+
+
+\section{MIS of PlayerBot Module}
+\subsection{Uses}
+Rules
+\subsection{Interface Syntax}
+\subsubsection{Exported Types}
+
+\subsubsection{Exported Access Programs}
+\begin{tabular}[pos]{|c|c|c|c|}
+\hline
+%	\label
+\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+\textcolor{red}{BotPlayCards} & Sequence of Card, Sequence of Card & \textcolor{red}{Sequence of Card} & ~\\ \hline
+\textcolor{red}{BotStartingTurn} & \textcolor{red}{Sequence of Card} & \textcolor{red}{Card} & ~\\ \hline
+\textcolor{red}{BotFreeTurn} & \textcolor{red}{Sequence of Card} & \textcolor{red}{Sequence of Card} & ~\\ \hline 
+\textcolor{red}{BotSelectSingle} & Sequence of Card, Sequence of Card & Card & ~ \\ \hline
+\textcolor{red}{BotSelectPair} & Sequence of Card, Sequence of Card & Sequence of Card & ~ \\ \hline
+\textcolor{red}{BotSelectFive} & Sequence of Card , Sequence of Card& Sequence of Card & ~\\ \hline
+\end{tabular}
+\subsection{Interface Semantics}
+\subsubsection{Access Program Semantics} 
+
+\noindent BotPlayCards(s, l):\\
+Input: A list of cards owned by the current playerBot. A list of cards played by the last player.\\
+Transition:\textcolor{red}{None}\\
+\textcolor{red}{Output: out = cards where
+If l.length == 1, cards = checkSingle(s, l).\\
+If l.length == 2, cards = checkPair(s, l).\\
+If l.length == 5, cards =  checkFive(s, l).}\\
+Exceptions: None \\
+
+\noindent BotStartingTurn(s):\\
+Input: None\\
+Transition: \textcolor{red}{None}\\
+Output: \textcolor{red}{out := Card representing Diamond 3 if s contains Diamond 3}\\
+Exceptions: None \\
+
+\noindent \textcolor{red}{BotFreeTurn(s):\\
+Input: A sequence of Card\\
+Transition: None\\
+Output: out = Valid cards to be played\\
+Exceptions: None\\}
+
+\noindent BotSelectSingle(s, l):\\
+Input: A list of cards owned by the current playerBot. A list of cards played by the last player.\\
+Transition: None\\
+Output: Valid Card to be played. \\
+Exceptions: None \\
+
+\noindent BotSelectPair(s, l):\\
+Input: A list of cards owned by the current playerBot. A list of cards played by the last player.\\
+Transition: None\\
+Output: Valid pair of Cards to be played. \\
+Exceptions: None \\
+
+\noindent BotSelectFive(s, l):\\
+Input: A list of cards owned by the current playerBot. A list of cards played by the last player.\\
+Transition: None\\
+Output: Valid combination of Cards to be played. \\
+Exceptions: None \\
+
+\section{MIS of Rules Module}
+\subsection{Uses}
+
+\subsection{Interface Syntax}
+\subsubsection{Exported Access Programs}
+\begin{tabular}[pos]{|c|c|c|c|}
+\hline
+%	\label
+\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+newDeck & ~ & \textcolor{red}{Sequence of Card} & ~ \\ \hline
+shuffle & \textcolor{red}{Sequence of Card} & \textcolor{red}{Sequence of Card} & ~ \\ \hline
+\textcolor{red}{isValidStartingPlay} & Sequence of Card & boolean & ~ \\ \hline
+\textcolor{red}{isValidPlay} & \textcolor{red}{Sequence of Card} & \textcolor{red}{boolean} & ~ \\ \hline
+\textcolor{red}{isValidSingle} & \textcolor{red}{Sequence of Card} & \textcolor{red}{boolean} & ~ \\ \hline
+isVaildPair & Sequence of Card & boolean & ~ \\ \hline
+\textcolor{red}{isValidFiveCardPlay} & \textcolor{red}{Sequence of Card} & \textcolor{red}{boolean} & ~ \\ \hline
+isVaildStraight & Sequence of Card & boolean & ~\\ \hline
+isVaildFlush & Sequence of Card & boolean & ~ \\ \hline
+isValidFullHouse &  Sequence of Card & boolean & ~ \\ \hline
+isValidFourOfaKind &  Sequence of Card & boolean & ~ \\ \hline
+isStrongerPlay & Sequence of Card & boolean & ~ \\ \hline
+isStrongerSingle & Card & boolean & ~ \\ \hline
+isStrongerPair & Sequence of Card& boolean & ~ \\ \hline
+isStrongerFive & Sequence of Card & boolean & ~ \\ \hline
+\textcolor{red}{setUserCards} & \textcolor{red}{Sequence of Card} & \textcolor{red}{Sequence of Card} & ~\\ \hline
+\textcolor{red}{setFirstTurn} & \textcolor{red}{Sequence of Card, Sequence of Card} & \textcolor{red}{boolean} & ~ \\ 
+~ & \textcolor{red}{Sequence of Card, Sequence of Card} & ~ & ~\\ \hline
+\textcolor{red}{getSuitValue} & \textcolor{red}{char} & \textcolor{red}{int} & ~ \\ \hline
+\textcolor{red}{sortCardsValue} & Sequence of Card & ~ & ~\\ \hline
+\textcolor{red}{sortCardsSuite} & Sequence of Card & ~ & ~ \\ \hline
+\end{tabular}
+\subsection{Interface Semantics}
+\subsubsection{State Constants}
+\textcolor{red}{suitsPath = ["Diamonds", "Clubs", "Hearts", "Spades"]}\\
+\noindent \textcolor{red}{valuesPath = ["", "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"]}\\
+\noindent \textcolor{red}{suits = ["D", "C", "H", "S"]}\\
+\noindent \textcolor{red}{SuiteVal = [1, 2, 3, 4]}\\
+\noindent \textcolor{red}{type = ["", "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]}
+
+\subsubsection{Assumptions}
+\textcolor{red}{shuffle(deck) must be called before setUserCards()}.
+\subsubsection{Access Program Semantics}
+
+\noindent newDeck():\\
+Input: None\\
+\textcolor{red}{Transition : None\\
+Ouput : out := ($\forall$ i, j : $\mathbf{N}$, c : Card $|$ i $\in$ [0..3], j $\in$ [0..12] : Deck.add(c) where c.suite := Suite[i] $\land$ c.num := Num[j])}\\
+Exceptions: None \\
+
+\noindent \textcolor{red}{shuffle(deck):\\
+Input: A sequence of Card\\
+Transition : None\\
+Output: output := deck by rearrange the order of Cards in deck randomly.\\
+Exceptions: None\\}
+
+\noindent \textcolor{red}{isValidStartingPlay(s):}\\
+Input: A list of the Cards owned by the current player.\\
+Transition: None\\
+Output : out := ($\exists$ i : $\mathbf{N} |$ i $\in$ [0..s.length] : s[i].suite == 'Diamond' $\land$ s[i].num == '3') \textcolor{red}{ $\land$ isValidPlay(s)} $\Rightarrow$ true
+Exceptions: None \\
+
+\noindent \textcolor{red}{isValidPlay(s):\\
+Input: A list of Cards selected by the current player.\\
+Transition: None\\
+Output : out := isValidSingle(s) $\lor$ isValidPair(s) $\lor$ isValidFiveCardPlay(s) $\Rightarrow$ true\\
+Exceptions: None\\} 
+
+\noindent \textcolor{red}{isValidSingle(s):\\
+Input: A list of Cards selected by the current player.\\
+Transition: None\\
+Output : out := s.length == 1\\
+Exceptions: None\\} 
+
+\noindent isValidPair(s):\\
+Input: A list of Cards selected by the current player.\\
+Transition: None\\
+Output : out := s.length == 2 $\land$ s[0].num == s[1].num\\
+Exceptions: None\\
+
+\noindent \textcolor{red}{isValidFiveCardPlay(s):\\
+Input: A list of Cards selected by the current player.\\
+Transition: None\\
+Output : out := s.length == 5 $\land$ (isValidStraight(s) $\lor$ isValidFlush(s) $\lor$ isValidFullHouse(s) $\lor$ isValidFourOfaKind(s)) $\Rightarrow$ true\\
+Exceptions: None\\} 
+
+\noindent isValidStraight(s):\\
+Input: A list of Cards selected by the current player.\\
+Transition: None\\
+Output : out := s.length == 5 $\land$ ($\forall$ i : $\mathbf{N} |$ i $\in$ [0..3] : NumSort(s)[i+1].num == NumSort(s)[i].num + 1) \\
+Exceptions: None\\
+
+\noindent isValidFlush(s):\\
+Input: A list of Cards selected by the current player.\\
+Transition: None\\
+Output : out := s.length == 5 $\land$ ($\forall$ i : $\mathbf{N} |$ i $\in$ [1..4] : s[i].suite == s[0].suite) \\
+Exceptions: None\\
+
+\noindent isValidFullHouse(s):\\
+Input: A list of Cards selected by the current player.\\
+Transition: None\\
+Output : out := s.length == 5 $\land$ (NumSort(s)[0] == NumSort(s)[1] $\land$ NumSort(s)[3] == NumSort(s)[4] $\land$ (NumSort(s)[2] == NumSort(s)[1] $\lor$ NumSort(s)[2] == NumSort(s)[3])) \\
+Exceptions: None\\
+
+\noindent isValidFourOfaKind(s):\\
+Input: A list of Cards selected by the current player.\\
+Transition: None\\
+Output : out := s.length == 5 $\land$ ((NumSort(s)[0] == NumSort(s)[1] $\land$ NumSort(s)[0] == NumSort(s)[2] $\land$ NumSort(s)[0] == NumSort(s)[3]) $\lor$ (NumSort(s)[4] == NumSort(s)[1] $\land$ NumSort(s)[4] == NumSort(s)[2] $\land$ NumSort(s)[4] == NumSort(s)[3])) \\
+Exceptions: None\\
+
+\noindent isStrongerPlay(s):\\
+Input: A list of Cards selected by the current player.\\
+Transition: None\\
+Output : $\lnot$ (s.length == last.length) $\Rightarrow$ false\\
+s.length == 1 $\land$ isStrongerSingle(s[0], last[0]) $\Rightarrow$ true\\
+s.length == 2 $\land$ isStrongerPair(s, last) $\Rightarrow$ true\\
+s.length == 5 $\land$ isStrongerFive(s, last) $\Rightarrow$ true\\
+$\lnot$ (s.length $\in$ [1, 2, 5]) $\Rightarrow$ false\\
+Exceptions: None\\
+
+\noindent isStrongerSingle(s):\\
+Input: A Card selected by the current player.\\
+Transition: None\\
+Output : out := s.num $>$ last[0].num $\lor$ (s.suite $>$ last[0].suite $\land$ s.num == last[0].num) 
+Exceptions: None\\
+
+\noindent isStrongerPair(s):\\
+Input: A list of Cards selected by the current player.\\
+Transition: None\\
+Output : out := isValidPair(s) $\land$ s[0].num > last[0].num $\lor$ (SuiteSort(s)[1].suite $>$ SuiteSort(last)[1].suite $\land$ s[0].num == last[0].num) 
+Exceptions: None\\
+
+\noindent isStrongerFive(s):\\
+Input: A list of Cards selected by the current player.\\
+Transition: None\\
+Output : out := isValidFourOfaKind(s) $\land$ isValidFullhouse(last) $\Rightarrow$ true\\
+isValidFourOfaKind(s) $\land$ isValidFlush(last) $\Rightarrow$ true\\
+isValidFourOfaKind(s) $\land$ isValidStraight(last) $\Rightarrow$ true\\
+isValidFullHouse(s) $\land$ isValidStraight(last) $\Rightarrow$ true\\
+isValidFullHouse(s) $\land$ isValidFlush(last) $\Rightarrow$ true\\
+isValidFullFlush(s) $\land$ isValidStraight(last) $\Rightarrow$ true\\
+isValidStraight(s) $\land$ isValidStraight(last) $\land$ NumSort(s)[4].num $>$ NumSort(last)[4].num $\Rightarrow$ true\\
+isValidFlush(s) $\land$ isValidFlush(last) $\land$ s[0].suite $>$ last[0].suite $\Rightarrow$ true\\
+isValidFullHouse(s) $\land$ isValidFullHouse(last) $\land$ (NumSort(s)[3].num $>$ NumSort(last)[3].num) $\Rightarrow$ true\\
+isValidFourOfaKind(s) $\land$ isValidFourOfaKind(last) $\land$ (NumSort(s)[4].num $>$ NumSort(last)[4].num $\lor$ NumSort(s)[0].num $>$ NumSort(last)[0].num) $\Rightarrow$ true\\
+Exceptions: None\\
+
+\noindent \textcolor{red}{setPalyerCards(deck):\\
+Input: Shuffled deck\\
+Transition:None\\
+Output: out := s where ($\forall$ i : $\mathbf{N}$ $|$ i $\in$ [0..12]: s.push(deck.pop()))\\
+Exceptions: None\\}
+
+\noindent \textcolor{red}{setFirstTurn(player, left, top, right):\\
+Input: A sequence of Card owned by each of the four player\\
+Transition:None\\
+Output: out:= turn where turn = 'player' if Diamond 3 is in player\\
+turn = 'left' if Diamond 3 is in left\\
+turn = 'top' if Diamond 3 is in top\\
+turn = 'right' if Diamond 3 is in right\\
+Exceptions: None\\}
+
+\noindent \textcolor{red}{getSuitValue(suit):\\
+Input: a char representing suit type\\
+Output: out := 1 if suit == 'D'\\
+2 if suit == 'C'\\
+3 if suit == 'H'\\
+4 if suit == 'S'\\
+Exceptions: None\\}
+
+\noindent \textcolor{red}{sortCardsValue(s)}:\\
+Input: A list of Cards\\
+Transition: None\\
+Output : out := a list of Cards from s sorted in the number rank order\\
+Exceptions: None\\
+
+\noindent \textcolor{red}{sortCardsSuit(s)}:\\
+Input: A list of Cards\\
+Transition: None\\
+Output : out := a list of Cards from s sorted in the suit rank order\\
+Exceptions: None\\
+\section{MIS of Game Module}
+\subsection{Interface Syntax}
+\subsubsection{Exported Types}
+Game = ?
+\subsubsection{Exported Access Programs}
+\begin{tabular}[pos]{|c|c|c|c|}
+\hline
+%	\label
+\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+Game & ~ & ~ & ~ \\ \hline
+\textcolor{red}{startGame}  & ~ & ~ & ~ \\ \hline
+resetGame & ~ & ~ & ~ \\ \hline
+\textcolor{red}{handleTimer} & ~ & ~ & ~ \\ \hline
+handlePlayerDeal & sequence of Card & Boolean & ~ \\ \hline
+AIplayCards & ~ & ~ & ~ \\ \hline
+getCardsforTurn & ~ & sequence of Card & ~ \\ \hline
+updateNextTurnCards & sequence of Card & ~ & ~ \\ \hline
+updateField & sequence of Card & ~ & ~ \\ \hline
+updateNextTurn & ~ & ~ & ~ \\ \hline
+\textcolor{red}{handlePlayPass} & ~ & ~ & ~ \\ \hline
+\textcolor{red}{typeSort} & ~ & ~ & ~ \\ \hline
+suitSort & ~ & ~ & ~ \\ \hline
+isGameOver & ~ & ~ & ~ \\ \hline
+displayPass & ~ & ~ & ~ \\ \hline
+\textcolor{red}{computePlayerScore} & ~ & ~ & ~ \\ \hline
+\end{tabular}
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+\textcolor{red}{
+rules: boolean\\
+playerCards: sequence of Cards\\
+leftCards: sequence of Cards\\
+topCards: sequence of Cards\\
+rightCards: sequence of Cards\\
+playerField: sequence of Cards\\
+leftField: sequence of Cards\\
+topField:sequence of Cards\\
+rightField: sequence of Cards\\
+startingTurn: boolean\\
+playerScore: int\\
+turn: String\\ 
+minutes: int\\
+seconds: int\\
+}
+cardsPlayed: sequence of Cards \\
+lastMove: sequence of Cards \\
+playerLastMove: sequence of Cards \\
+freeMove: boolean\\
+gameOver: boolean\\
+
+
+
+
+\subsubsection{Environmental Variables}
+\textcolor{red}{Screen}
+
+\subsubsection{Assumptions}
+The constructor of Game is called only as a React component. The access routines cannot be called outside of the scope. 
+\subsubsection{Access Program Semantics} 
+
+Game(): \\
+Input: None.\\
+Transition: Initialize the state variables for object Game: 
+\textcolor{red}{
+\begin{itemize}
+    \item rules:= true
+    \item playerCards, leftCards, topCards, rightCards := []
+    \item playerField, leftField, topField, rightField := []
+    \item startingTurn:= true
+    \item turn:= null
+    \item playerScore:= 0
+    \item cardsPlayed:= []
+    \item lastMove:= []
+    \item gameOver:= false
+    \item freeMove:= false
+    \item minutes:= 10
+    \item seconds:= 0
+    \item lastMovePlayer:= null
+\end{itemize}\\}
+Output: None\\
+Exceptions: None \\
+
+\noindent startGame()\\
+Input: None\\
+Transition: Sets rules to false, start the game. \\
+Output: None\\
+Exceptions: None \\
+
+\noindent resetGame()\\
+Input: None\\
+Transition: Resets the game to their initial states. Set seach player's deck to the randomly generated sequence of card. \\
+Output: None\\
+Exceptions: None \\
+
+\noindent handleTimer()\\
+Input: \\
+Transition: Sets gameOver to be true. \\
+Output: None\\
+Exceptions: None \\
+
+
+\noindent \textcolor{red}{handlePlayerDeal()\\
+Input: cards\\
+Transition: playerFieldText:= "". $\neg validPlay(cards) \Rightarrow$ playerFieldText = "starting turn must be valid and contain 3 of diamonds"\\
+Output: None\\
+Exceptions: None \\
+}
+
+\noindent AIplayCards()\\
+Input: None\\
+Transition: Computes playableCards and update next turn.\\
+Output: None\\
+Exceptions: None \\
+
+
+\noindent \textcolor{red}{getCardsforTurn()\\
+Input: None\\
+Transition: None \\
+Output: out := (($turn \equiv "left" \Rightarrow$ leftCards) $\cup$ ($turn \equiv "top" \Rightarrow$ topCards) $\cup$ ($turn \equiv "right" \Rightarrow$ rightCards) $\cup$ ($turn \equiv "player" \Rightarrow$ playerCards))\\
+Exceptions: None \\
+}
+
+\noindent  updateNextTurnCards(cards)\\
+Input: cards: Sequence of cards.\\
+Transition: 
+\begin{itemize}
+                \item cardsPlayed := cardsPlayed
+                \item lastMove := cards
+                \item lastMovePlayer := turn
+                \item freeMove :=
+\end{itemize}        
+Output: None\\
+Exceptions: None \\
+
+\noindent updateField(cards)\\
+Input: cards: Sequence of cards.\\
+Transition: ($turn \equiv "opponentLeft" \Rightarrow$ opponentLeftField := cards) $\cup$ ($turn \equiv "opponentTop" \Rightarrow$ opponentTopField := cards) $\cup$ ($turn \equiv "opponentRight" \Rightarrow$ opponentRightField := cards) $\cup$ ($turn \equiv "player" \Rightarrow$ playerField := cards)\\\\
+Output: None\\
+Exceptions: None \\
+
+\noindent updateNextTurn()  \\
+Input: None\\
+Transition: ($turn \equiv "opponentLeft" \Rightarrow$ turn := "player") $\cup$ ($turn \equiv "opponentTop" \Rightarrow$ turn := "opponentLeft") $\cup$ ($turn \equiv "opponentRight" \Rightarrow$ turn := "opponentRight") $\cup$ ($turn \equiv "player" \Rightarrow$ turn := "opponentRight")\\
+Output: None\\
+Exceptions: None \\
+
+
+\noindent \textcolor{red}{handlePlayerPass()\\
+Input: None\\
+Transition: ($startingTurn \Rightarrow$ playerFieldText := "You cannot pass the first turn") $\cup$ ($\neg startingTurn  \Rightarrow$ playerFieldText := "")\\
+Output: None\\
+Exceptions: None \\
+}
+
+\noindent \textcolor{red}{numberSort()}\\
+Input: None\\
+Transition: playerCards := playerCards.sortCardsValue()\\
+Output: None\\
+Exceptions: None \\
+
+
+\noindent suitSort()\\
+Input: None\\
+Transition:playerCards := playerCards.sortCardsSuit() \\
+Output: None\\
+Exceptions: None \\
+
+\noindent isGameOver() \\
+Input: None\\
+Transition: ($ len(currentPlayerCards) \equiv 0 \Rightarrow$ gameOver := true\\
+Output: out := ($ len(currentPlayerCards) \equiv 0 \Rightarrow$ true)\\
+Exceptions: None \\
+
+\noindent displayPass() \\
+Input: None\\
+Transition: Display a text to the user to indicate pass turn. \\
+Output: None\\
+Exceptions: None \\
+
+\noindent \textcolor{red}{computePlayerScore() \\
+Input: None\\
+Transition: None\\
+Output: ceil((13 - playerCards.length) * (100 / 13))\\
+Exceptions: None \\
+}
+
+\section{MIS of GameplayField Module}
+\subsection{Uses}
+Game
+\subsection{Interface Syntax}
+\subsubsection{Exported Types}
+\subsubsection{Exported Access Programs}
+\begin{tabular}[pos]{|c|c|c|c|}
+\hline
+%	\label
+\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+ render & ~  & HTML Card  &~ \\ 
+\hline
+\end{tabular}
+
+
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+
+\subsubsection{Environmental Variables}
+\textcolor{red}{Screen}
+\subsubsection{Assumptions}
+
+\subsubsection{Access Program Semantics}
+
+\noindent render()\\
+Input: None\\
+Transition: None\\
+Output: Arrangement of players in gameplay field. \\
+Exceptions: None \\
+\end{document}
